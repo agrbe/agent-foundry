@@ -12,7 +12,7 @@ repo:
   homepage: ""
   repository_url: ""
   created_at: "2026-04-03"
-  updated_at: "2026-04-04"
+  updated_at: "2026-04-05"
 
 policies:
   third_party_licenses_allowed:
@@ -62,6 +62,22 @@ catalog:
       path: skills/foundry-yaml-builder
       title: Foundry YAML Builder
       description: Generate, fill, and normalize `foundry.yaml` for skills in the `agent-foundry` repository. Use when Codex needs to create a missing `foundry.yaml`, rebuild one from `SKILL.md` and repository defaults, switch between the simple repository format and the full spec template, or populate provenance fields for `native`, `third_party`, or `adapted` skills under `skills/`.
+      origin: native
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: ""
+      source_path: ""
+      modified_from_source: false
+      status: draft
+      tags:
+        - workflow
+        - metadata
+        - governance
+
+    - id: foundry-provenance
+      path: skills/foundry-provenance
+      title: Foundry Provenance
+      description: Register or review artifacts in `agent-foundry` with provenance, licensing, and catalog updates. Use when Codex needs to add, import, adapt, move, or audit a skill, agent, MCP, hook, template, or other tracked artifact; determine whether it is `native`, `third_party`, or `adapted`; gather source and license details; update `registry.yaml`, `NOTICE`, `third_party/THIRD_PARTY_NOTICES.md`, and any local `LICENSE.txt` or `NOTICE.txt`; and verify the repository is ready for merge.
       origin: native
       owner: "@agrbe"
       license: Apache-2.0
