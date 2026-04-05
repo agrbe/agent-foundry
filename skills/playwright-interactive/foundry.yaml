@@ -1,0 +1,10 @@
+id: playwright-interactive
+title: Playwright Interactive
+origin: third_party
+owner: '@agrbe'
+license: Apache-2.0
+source_repo: openai/skills
+source_path: skills/.curated/playwright-interactive
+modified_from_source: false
+status: draft
+license_file: LICENSE.txt

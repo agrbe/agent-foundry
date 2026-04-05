@@ -1,0 +1,10 @@
+id: security-threat-model
+title: Security Threat Model
+origin: third_party
+owner: '@agrbe'
+license: Apache-2.0
+source_repo: openai/skills
+source_path: skills/.curated/security-threat-model
+modified_from_source: false
+status: draft
+license_file: LICENSE.txt

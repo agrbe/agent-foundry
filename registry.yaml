@@ -40,6 +40,7 @@ catalog:
         - workflow
         - catalog
         - provenance
+
     - id: git-commit-message
       path: skills/git-commit-message
       title: Git Commit Message
@@ -55,6 +56,7 @@ catalog:
         - github
         - docs
         - workflow
+
     - id: foundry-yaml-builder
       path: skills/foundry-yaml-builder
       title: Foundry YAML Builder
@@ -70,4 +72,154 @@ catalog:
         - workflow
         - metadata
         - governance
+
+    - id: doc
+      path: skills/doc
+      title: Doc
+      description:
+        Use when the task involves reading, creating, or editing `.docx` documents,
+        especially when formatting or layout fidelity matters; prefer `python-docx` plus
+        the bundled `scripts/render_docx.py` for visual checks.
+      origin: third_party
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: openai/skills
+      source_path: skills/.curated/doc
+      modified_from_source: false
+      status: draft
+
+    - id: imagegen
+      path: skills/imagegen
+      title: Imagegen
+      description:
+        Generate or edit raster images when the task benefits from AI-created
+        bitmap visuals such as photos, illustrations, textures, sprites, mockups, or
+        transparent-background cutouts. Use when Codex should create a brand-new image,
+        transform an existing image, or derive visual variants from references, and
+        the output should be a bitmap asset rather than repo-native code or vector.
+        Do not use when the task is better handled by editing existing SVG/vector/code-native
+        assets, extending an established icon or logo system, or building the visual
+        directly in HTML/CSS/canvas.
+      origin: third_party
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: openai/skills
+      source_path: skills/.curated/imagegen
+      modified_from_source: false
+      status: draft
+
+    - id: pdf
+      path: skills/pdf
+      title: PDF
+      description:
+        Use when tasks involve reading, creating, or reviewing PDF files where
+        rendering and layout matter; prefer visual checks by rendering pages (Poppler) and
+        use Python tools such as `reportlab`, `pdfplumber`, and `pypdf` for generation and
+        extraction.
+      origin: third_party
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: openai/skills
+      source_path: skills/.curated/pdf
+      modified_from_source: false
+      status: draft
+
+    - id: playwright
+      path: skills/playwright
+      title: Playwright
+      description:
+        Use when the task requires automating a real browser from the terminal
+        (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging)
+        via `playwright-cli` or the bundled wrapper script.
+      origin: third_party
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: openai/skills
+      source_path: skills/.curated/playwright
+      modified_from_source: false
+      status: draft
+
+    - id: playwright-interactive
+      path: skills/playwright-interactive
+      title: Playwright Interactive
+      description:
+        Persistent browser and Electron interaction through `js_repl` for fast
+        iterative UI debugging.
+      origin: third_party
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: openai/skills
+      source_path: skills/.curated/playwright-interactive
+      modified_from_source: false
+      status: draft
+
+    - id: security-best-practices
+      path: skills/security-best-practices
+      title: Security Best Practices
+      description:
+        Perform language and framework specific security best-practice reviews
+        and suggest improvements. Trigger only when the user explicitly requests security
+        best practices guidance, a security review/report, or secure-by-default coding help.
+        Trigger only for supported languages (python, javascript/typescript, go). Do not
+        trigger for general code review, debugging, or non-security tasks.
+      origin: third_party
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: openai/skills
+      source_path: skills/.curated/security-best-practices
+      modified_from_source: false
+      status: draft
+
+    - id: security-ownership-map
+      path: skills/security-ownership-map
+      title: Security Ownership Map
+      description:
+        "Analyze git repositories to build a security ownership topology
+        (people-to-file), compute bus factor and sensitive-code ownership, and export
+        CSV/JSON for graph databases and visualization. Trigger only when the user
+        explicitly wants a security-oriented ownership or bus-factor analysis grounded
+        in git history (for example: orphaned sensitive code, security maintainers,
+        CODEOWNERS reality checks for risk, sensitive hotspots, or ownership clusters).
+        Do not trigger for general maintainer lists or non-security ownership questions."
+      origin: third_party
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: openai/skills
+      source_path: skills/.curated/security-ownership-map
+      modified_from_source: false
+      status: draft
+
+    - id: security-threat-model
+      path: skills/security-threat-model
+      title: Security Threat Model
+      description:
+        Repository-grounded threat modeling that enumerates trust boundaries,
+        assets, attacker capabilities, abuse paths, and mitigations, and writes a concise
+        Markdown threat model. Trigger only when the user explicitly asks to threat model
+        a codebase or path, enumerate threats/abuse paths, or perform AppSec threat modeling.
+        Do not trigger for general architecture summaries, code review, or non-security
+        design work.
+      origin: third_party
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: openai/skills
+      source_path: skills/.curated/security-threat-model
+      modified_from_source: false
+      status: draft
+
+    - id: spreadsheet
+      path: skills/spreadsheet
+      title: Spreadsheet
+      description:
+        Use when tasks involve creating, editing, analyzing, or formatting spreadsheets
+        (`.xlsx`, `.csv`, `.tsv`) with formula-aware workflows, cached recalculation, and
+        visual review.
+      origin: third_party
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: openai/skills
+      source_path: skills/.curated/spreadsheet
+      modified_from_source: false
+      status: draft
+
   mcps: []

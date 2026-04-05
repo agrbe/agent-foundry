@@ -1,0 +1,10 @@
+id: security-best-practices
+title: Security Best Practices
+origin: third_party
+owner: '@agrbe'
+license: Apache-2.0
+source_repo: openai/skills
+source_path: skills/.curated/security-best-practices
+modified_from_source: false
+status: draft
+license_file: LICENSE.txt
