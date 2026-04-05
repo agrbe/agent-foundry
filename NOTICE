@@ -12,6 +12,7 @@ Third-party sources currently identified for inclusion and/or adaptation
 include:
 
 - openai/skills (Apache-2.0)
+- VoltAgent/awesome-codex-subagents (MIT)
 
 Additional attribution, provenance, and third-party notice details are
 maintained in:

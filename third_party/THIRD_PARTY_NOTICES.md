@@ -15,6 +15,12 @@ Unless otherwise stated:
 - Intended use in this repository: imported or adapted codex skills and related metadata
 - Attribution requirement: preserve the original copyright and license notice in copies or substantial portions
 
+### 2. VoltAgent/awesome-codex-subagents
+- Upstream repository: `https://github.com/VoltAgent/awesome-codex-subagents`
+- Upstream license: MIT
+- Intended use in this repository: imported Codex-native subagent definitions under `agents/`
+- Attribution requirement: preserve the original copyright and license notice in copies or substantial portions
+
 ## Distribution Policy
 
 When material is copied or adapted from a third-party source:
@@ -49,6 +55,18 @@ last_synced: 2026-04-04
 notes:
   - <what was changed>
 ```
+
+## Registered Agent Imports
+
+### VoltAgent Codex Subagents
+- Path: `agents/`
+- Included upstream material: `136` `.toml` subagent definitions
+- Origin: `third_party`
+- Source: `VoltAgent/awesome-codex-subagents` (`categories/*/*.toml`)
+- License: `MIT`
+- Modified: `no` for imported upstream files
+- Owner: `@agrbe`
+- Status: `draft`
 
 ## Notes
 

@@ -23,7 +23,2182 @@ policies:
   require_provenance_for_imports: true
 
 catalog:
-  agents: []
+  agents:
+    - id: api-designer
+      path: agents/api-designer.toml
+      title: API Designer
+      description: "Use when a task needs API contract design, evolution planning, or compatibility review before implementation starts."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/api-designer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: backend-developer
+      path: agents/backend-developer.toml
+      title: Backend Developer
+      description: "Use when a task needs scoped backend implementation or backend bug fixes after the owning path is known."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/backend-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: code-mapper
+      path: agents/code-mapper.toml
+      title: Code Mapper
+      description: "Use when the parent agent needs a high-confidence map of code paths, ownership boundaries, and execution flow before changes are made."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/code-mapper.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: electron-pro
+      path: agents/electron-pro.toml
+      title: Electron Pro
+      description: "Use when a task needs Electron-specific implementation or debugging across main/renderer/preload boundaries, packaging, and desktop runtime behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/electron-pro.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: frontend-developer
+      path: agents/frontend-developer.toml
+      title: Frontend Developer
+      description: "Use when a task needs scoped frontend implementation or UI bug fixes with production-level behavior and quality."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/frontend-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: fullstack-developer
+      path: agents/fullstack-developer.toml
+      title: Fullstack Developer
+      description: "Use when one bounded feature or bug spans frontend and backend and a single worker should own the entire path."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/fullstack-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: graphql-architect
+      path: agents/graphql-architect.toml
+      title: GraphQL Architect
+      description: "Use when a task needs GraphQL schema evolution, resolver architecture, federation design, or distributed graph performance/security review."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/graphql-architect.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: microservices-architect
+      path: agents/microservices-architect.toml
+      title: Microservices Architect
+      description: "Use when a task needs service-boundary design, inter-service contract review, or distributed-system architecture decisions."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/microservices-architect.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: mobile-developer
+      path: agents/mobile-developer.toml
+      title: Mobile Developer
+      description: "Use when a task needs mobile implementation or debugging across app lifecycle, API integration, and device/platform-specific UX constraints."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/mobile-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: ui-designer
+      path: agents/ui-designer.toml
+      title: UI Designer
+      description: "Use when a task needs concrete UI decisions, interaction design, and implementation-ready design guidance before or during development."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/ui-designer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: ui-fixer
+      path: agents/ui-fixer.toml
+      title: UI Fixer
+      description: "Use when a UI issue is already reproduced and the parent agent wants the smallest safe patch."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/ui-fixer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: websocket-engineer
+      path: agents/websocket-engineer.toml
+      title: WebSocket Engineer
+      description: "Use when a task needs real-time transport and state work across WebSocket lifecycle, message contracts, and reconnect/failure behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/01-core-development/websocket-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - core-development
+
+    - id: angular-architect
+      path: agents/angular-architect.toml
+      title: Angular Architect
+      description: "Use when a task needs Angular-specific help for component architecture, dependency injection, routing, signals, or enterprise application structure."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/angular-architect.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: cpp-pro
+      path: agents/cpp-pro.toml
+      title: C++ Pro
+      description: "Use when a task needs C++ work involving performance-sensitive code, memory ownership, concurrency, or systems-level integration."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/cpp-pro.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: csharp-developer
+      path: agents/csharp-developer.toml
+      title: C# Developer
+      description: "Use when a task needs C# or .NET application work involving services, APIs, async flows, or application architecture."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/csharp-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: django-developer
+      path: agents/django-developer.toml
+      title: Django Developer
+      description: "Use when a task needs Django-specific work across models, views, forms, ORM behavior, or admin and middleware flows."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/django-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: dotnet-core-expert
+      path: agents/dotnet-core-expert.toml
+      title: .NET Core Expert
+      description: "Use when a task needs modern .NET and ASP.NET Core expertise for APIs, hosting, middleware, or cross-platform application behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/dotnet-core-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: dotnet-framework-4.8-expert
+      path: agents/dotnet-framework-4.8-expert.toml
+      title: .NET Framework 4.8 Expert
+      description: "Use when a task needs .NET Framework 4.8 expertise for legacy enterprise applications, compatibility constraints, or Windows-bound integrations."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/dotnet-framework-4.8-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: elixir-expert
+      path: agents/elixir-expert.toml
+      title: Elixir Expert
+      description: "Use when a task needs Elixir and OTP expertise for processes, supervision, fault tolerance, or Phoenix application behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/elixir-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: erlang-expert
+      path: agents/erlang-expert.toml
+      title: Erlang Expert
+      description: "Use when a task needs Erlang/OTP and rebar3 expertise for BEAM processes, testing, releases, upgrades, or distributed runtime behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/erlang-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: flutter-expert
+      path: agents/flutter-expert.toml
+      title: Flutter Expert
+      description: "Use when a task needs Flutter expertise for widget behavior, state management, rendering issues, or mobile cross-platform implementation."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/flutter-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: golang-pro
+      path: agents/golang-pro.toml
+      title: Golang Pro
+      description: "Use when a task needs Go expertise for concurrency, service implementation, interfaces, tooling, or performance-sensitive backend paths."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/golang-pro.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: java-architect
+      path: agents/java-architect.toml
+      title: Java Architect
+      description: "Use when a task needs Java application or service architecture help across framework boundaries, JVM behavior, or large codebase structure."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/java-architect.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: javascript-pro
+      path: agents/javascript-pro.toml
+      title: JavaScript Pro
+      description: "Use when a task needs JavaScript-focused work for runtime behavior, browser or Node execution, or application-level code that is not TypeScript-led."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/javascript-pro.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: kotlin-specialist
+      path: agents/kotlin-specialist.toml
+      title: Kotlin Specialist
+      description: "Use when a task needs Kotlin expertise for JVM applications, Android code, coroutines, or modern strongly typed service logic."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/kotlin-specialist.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: laravel-specialist
+      path: agents/laravel-specialist.toml
+      title: Laravel Specialist
+      description: "Use when a task needs Laravel-specific work across routing, Eloquent, queues, validation, or application structure."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/laravel-specialist.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: nextjs-developer
+      path: agents/nextjs-developer.toml
+      title: Next.js Developer
+      description: "Use when a task needs Next.js-specific work across routing, rendering modes, server actions, data fetching, or deployment-sensitive frontend behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/nextjs-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: php-pro
+      path: agents/php-pro.toml
+      title: PHP Pro
+      description: "Use when a task needs PHP expertise for application logic, framework integration, runtime debugging, or server-side code evolution."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/php-pro.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: powershell-5.1-expert
+      path: agents/powershell-5.1-expert.toml
+      title: PowerShell 5.1 Expert
+      description: "Use when a task needs Windows PowerShell 5.1 expertise for legacy automation, full .NET Framework interop, or Windows administration scripts."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/powershell-5.1-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: powershell-7-expert
+      path: agents/powershell-7-expert.toml
+      title: PowerShell 7 Expert
+      description: "Use when a task needs modern PowerShell 7 expertise for cross-platform automation, scripting, or .NET-based operational tooling."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/powershell-7-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: python-pro
+      path: agents/python-pro.toml
+      title: Python Pro
+      description: "Use when a task needs a Python-focused subagent for runtime behavior, packaging, typing, testing, or framework-adjacent implementation."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/python-pro.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: rails-expert
+      path: agents/rails-expert.toml
+      title: Rails Expert
+      description: "Use when a task needs Ruby on Rails expertise for models, controllers, jobs, callbacks, or convention-driven application changes."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/rails-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: react-specialist
+      path: agents/react-specialist.toml
+      title: React Specialist
+      description: "Use when a task needs a React-focused agent for component behavior, state flow, rendering bugs, or modern React patterns."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/react-specialist.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: rust-engineer
+      path: agents/rust-engineer.toml
+      title: Rust Engineer
+      description: "Use when a task needs Rust expertise for ownership-heavy systems code, async runtime behavior, or performance-sensitive implementation."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/rust-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: spring-boot-engineer
+      path: agents/spring-boot-engineer.toml
+      title: Spring Boot Engineer
+      description: "Use when a task needs Spring Boot expertise for service behavior, configuration, data access, or enterprise API implementation."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/spring-boot-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: sql-pro
+      path: agents/sql-pro.toml
+      title: SQL Pro
+      description: "Use when a task needs SQL query design, query review, schema-aware debugging, or database migration analysis."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/sql-pro.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: swift-expert
+      path: agents/swift-expert.toml
+      title: Swift Expert
+      description: "Use when a task needs Swift expertise for iOS or macOS code, async flows, Apple platform APIs, or strongly typed application logic."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/swift-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: typescript-pro
+      path: agents/typescript-pro.toml
+      title: TypeScript Pro
+      description: "Use when a task needs strong TypeScript help for types, interfaces, refactors, or compiler-driven fixes."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/typescript-pro.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: vue-expert
+      path: agents/vue-expert.toml
+      title: Vue Expert
+      description: "Use when a task needs Vue expertise for component behavior, Composition API patterns, routing, or state and rendering issues."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/02-language-specialists/vue-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - language-specialists
+
+    - id: azure-infra-engineer
+      path: agents/azure-infra-engineer.toml
+      title: Azure Infra Engineer
+      description: "Use when a task needs Azure-specific infrastructure review or implementation across resources, networking, identity, or automation."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/azure-infra-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: cloud-architect
+      path: agents/cloud-architect.toml
+      title: Cloud Architect
+      description: "Use when a task needs cloud architecture review across compute, storage, networking, reliability, or multi-service design."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/cloud-architect.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: database-administrator
+      path: agents/database-administrator.toml
+      title: Database Administrator
+      description: "Use when a task needs operational database administration review for availability, backups, recovery, permissions, or runtime health."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/database-administrator.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: deployment-engineer
+      path: agents/deployment-engineer.toml
+      title: Deployment Engineer
+      description: "Use when a task needs deployment workflow changes, release strategy updates, or rollout and rollback safety analysis."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/deployment-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: devops-engineer
+      path: agents/devops-engineer.toml
+      title: DevOps Engineer
+      description: "Use when a task needs CI, deployment pipeline, release automation, or environment configuration work."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/devops-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: devops-incident-responder
+      path: agents/devops-incident-responder.toml
+      title: DevOps Incident Responder
+      description: "Use when a task needs rapid operational triage across CI, deployments, infrastructure automation, and service delivery failures."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/devops-incident-responder.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: docker-expert
+      path: agents/docker-expert.toml
+      title: Docker Expert
+      description: "Use when a task needs Dockerfile review, image optimization, multi-stage build fixes, or container runtime debugging."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/docker-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: incident-responder
+      path: agents/incident-responder.toml
+      title: Incident Responder
+      description: "Use when a task needs broad production incident triage, containment planning, or evidence-driven root cause analysis."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/incident-responder.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: kubernetes-specialist
+      path: agents/kubernetes-specialist.toml
+      title: Kubernetes Specialist
+      description: "Use when a task needs Kubernetes manifest review, rollout safety analysis, or cluster workload debugging."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/kubernetes-specialist.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: network-engineer
+      path: agents/network-engineer.toml
+      title: Network Engineer
+      description: "Use when a task needs network-path analysis, service connectivity debugging, load-balancer review, or infrastructure network design input."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/network-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: platform-engineer
+      path: agents/platform-engineer.toml
+      title: Platform Engineer
+      description: "Use when a task needs internal platform, golden-path, or self-service infrastructure design for developers."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/platform-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: security-engineer
+      path: agents/security-engineer.toml
+      title: Security Engineer
+      description: "Use when a task needs infrastructure and platform security engineering across IAM, secrets, network controls, or hardening work."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/security-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: sre-engineer
+      path: agents/sre-engineer.toml
+      title: SRE Engineer
+      description: "Use when a task needs reliability engineering work involving SLOs, alerting, error budgets, operational safety, or service resilience."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/sre-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: terraform-engineer
+      path: agents/terraform-engineer.toml
+      title: Terraform Engineer
+      description: "Use when a task needs Terraform module design, plan review, state-aware change analysis, or IaC refactoring."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/terraform-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: terragrunt-expert
+      path: agents/terragrunt-expert.toml
+      title: Terragrunt Expert
+      description: "Use when a task needs Terragrunt-specific help for module orchestration, environment layering, dependency wiring, or DRY infrastructure structure."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/terragrunt-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: windows-infra-admin
+      path: agents/windows-infra-admin.toml
+      title: Windows Infra Admin
+      description: "Use when a task needs Windows infrastructure administration across Active Directory, DNS, DHCP, GPO, or Windows automation."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/03-infrastructure/windows-infra-admin.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - infrastructure
+
+    - id: accessibility-tester
+      path: agents/accessibility-tester.toml
+      title: Accessibility Tester
+      description: "Use when a task needs an accessibility audit of UI changes, interaction flows, or component behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/accessibility-tester.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: ad-security-reviewer
+      path: agents/ad-security-reviewer.toml
+      title: AD Security Reviewer
+      description: "Use when a task needs Active Directory security review across identity boundaries, delegation, GPO exposure, or directory hardening."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/ad-security-reviewer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: architect-reviewer
+      path: agents/architect-reviewer.toml
+      title: Architect Reviewer
+      description: "Use when a task needs architectural review for coupling, system boundaries, long-term maintainability, or design coherence."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/architect-reviewer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: browser-debugger
+      path: agents/browser-debugger.toml
+      title: Browser Debugger
+      description: "Use when a task needs browser-based reproduction, UI evidence gathering, or client-side debugging through a browser MCP server."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/browser-debugger.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: chaos-engineer
+      path: agents/chaos-engineer.toml
+      title: Chaos Engineer
+      description: "Use when a task needs resilience analysis for dependency failure, degraded modes, recovery behavior, or controlled fault-injection planning."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/chaos-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: code-reviewer
+      path: agents/code-reviewer.toml
+      title: Code Reviewer
+      description: "Use when a task needs a broader code-health review covering maintainability, design clarity, and risky implementation choices in addition to correctness."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/code-reviewer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: compliance-auditor
+      path: agents/compliance-auditor.toml
+      title: Compliance Auditor
+      description: "Use when a task needs compliance-oriented review of controls, auditability, policy alignment, or evidence gaps in a regulated workflow."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/compliance-auditor.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: debugger
+      path: agents/debugger.toml
+      title: Debugger
+      description: "Use when a task needs deep bug isolation across code paths, stack traces, runtime behavior, or failing tests."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/debugger.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: error-detective
+      path: agents/error-detective.toml
+      title: Error Detective
+      description: "Use when a task needs log, exception, or stack-trace analysis to identify the most probable failure source quickly."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/error-detective.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: penetration-tester
+      path: agents/penetration-tester.toml
+      title: Penetration Tester
+      description: "Use when a task needs adversarial review of an application path for exploitability, abuse cases, or practical attack surface analysis."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/penetration-tester.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: performance-engineer
+      path: agents/performance-engineer.toml
+      title: Performance Engineer
+      description: "Use when a task needs performance investigation for slow requests, hot paths, rendering regressions, or scalability bottlenecks."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/performance-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: powershell-security-hardening
+      path: agents/powershell-security-hardening.toml
+      title: PowerShell Security Hardening
+      description: "Use when a task needs PowerShell-focused hardening across script safety, admin automation, execution controls, or Windows security posture."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/powershell-security-hardening.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: qa-expert
+      path: agents/qa-expert.toml
+      title: QA Expert
+      description: "Use when a task needs test strategy, acceptance coverage planning, or risk-based QA guidance for a feature or release."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/qa-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: reviewer
+      path: agents/reviewer.toml
+      title: Reviewer
+      description: "Use when a task needs PR-style review focused on correctness, security, behavior regressions, and missing tests."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/reviewer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: security-auditor
+      path: agents/security-auditor.toml
+      title: Security Auditor
+      description: "Use when a task needs focused security review of code, auth flows, secrets handling, input validation, or infrastructure configuration."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/security-auditor.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: test-automator
+      path: agents/test-automator.toml
+      title: Test Automator
+      description: "Use when a task needs implementation of automated tests, test harness improvements, or targeted regression coverage."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/04-quality-security/test-automator.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - quality-security
+
+    - id: ai-engineer
+      path: agents/ai-engineer.toml
+      title: AI Engineer
+      description: "Use when a task needs implementation or debugging of model-backed application features, agent flows, or evaluation hooks."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/ai-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: data-analyst
+      path: agents/data-analyst.toml
+      title: Data Analyst
+      description: "Use when a task needs data interpretation, metric breakdown, trend explanation, or decision support from existing analytics outputs."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/data-analyst.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: data-engineer
+      path: agents/data-engineer.toml
+      title: Data Engineer
+      description: "Use when a task needs ETL, ingestion, transformation, warehouse, or data-pipeline implementation and debugging."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/data-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: data-scientist
+      path: agents/data-scientist.toml
+      title: Data Scientist
+      description: "Use when a task needs statistical reasoning, experiment interpretation, feature analysis, or model-oriented data exploration."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/data-scientist.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: database-optimizer
+      path: agents/database-optimizer.toml
+      title: Database Optimizer
+      description: "Use when a task needs database performance analysis for query plans, schema design, indexing, or data access patterns."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/database-optimizer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: llm-architect
+      path: agents/llm-architect.toml
+      title: LLM Architect
+      description: "Use when a task needs architecture review for prompts, tool use, retrieval, evaluation, or multi-step LLM workflows."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/llm-architect.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: machine-learning-engineer
+      path: agents/machine-learning-engineer.toml
+      title: Machine Learning Engineer
+      description: "Use when a task needs ML system implementation work across training pipelines, feature flow, model serving, or inference integration."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/machine-learning-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: ml-engineer
+      path: agents/ml-engineer.toml
+      title: ML Engineer
+      description: "Use when a task needs practical machine learning implementation across feature engineering, inference wiring, and model-backed application logic."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/ml-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: mlops-engineer
+      path: agents/mlops-engineer.toml
+      title: MLOps Engineer
+      description: "Use when a task needs model deployment, registry, pipeline, monitoring, or environment orchestration for machine learning systems."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/mlops-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: nlp-engineer
+      path: agents/nlp-engineer.toml
+      title: NLP Engineer
+      description: "Use when a task needs NLP-specific implementation or analysis involving text processing, embeddings, ranking, or language-model-adjacent pipelines."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/nlp-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: postgres-pro
+      path: agents/postgres-pro.toml
+      title: Postgres Pro
+      description: "Use when a task needs PostgreSQL-specific expertise for schema design, performance behavior, locking, or operational database features."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/postgres-pro.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: prompt-engineer
+      path: agents/prompt-engineer.toml
+      title: Prompt Engineer
+      description: "Use when a task needs prompt revision, instruction design, eval-oriented prompt comparison, or prompt-output contract tightening."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/05-data-ai/prompt-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - data-ai
+
+    - id: build-engineer
+      path: agents/build-engineer.toml
+      title: Build Engineer
+      description: "Use when a task needs build-graph debugging, bundling fixes, compiler pipeline work, or CI build stabilization."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/build-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: cli-developer
+      path: agents/cli-developer.toml
+      title: Cli Developer
+      description: "Use when a task needs a command-line interface feature, UX review, argument parsing change, or shell-facing workflow improvement."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/cli-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: dependency-manager
+      path: agents/dependency-manager.toml
+      title: Dependency Manager
+      description: "Use when a task needs dependency upgrades, package graph analysis, version-policy cleanup, or third-party library risk assessment."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/dependency-manager.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: documentation-engineer
+      path: agents/documentation-engineer.toml
+      title: Documentation Engineer
+      description: "Use when a task needs technical documentation that must stay faithful to current code, tooling, and operator workflows."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/documentation-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: dx-optimizer
+      path: agents/dx-optimizer.toml
+      title: Dx Optimizer
+      description: "Use when a task needs developer-experience improvements in setup time, local workflows, feedback loops, or day-to-day tooling friction."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/dx-optimizer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: git-workflow-manager
+      path: agents/git-workflow-manager.toml
+      title: Git Workflow Manager
+      description: "Use when a task needs help with branching strategy, merge flow, release branching, or repository collaboration conventions."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/git-workflow-manager.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: legacy-modernizer
+      path: agents/legacy-modernizer.toml
+      title: Legacy Modernizer
+      description: "Use when a task needs a modernization path for older code, frameworks, or architecture without losing behavioral safety."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/legacy-modernizer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: mcp-developer
+      path: agents/mcp-developer.toml
+      title: MCP Developer
+      description: "Use when a task needs work on MCP servers, MCP clients, tool wiring, or protocol-aware integrations."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/mcp-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: powershell-module-architect
+      path: agents/powershell-module-architect.toml
+      title: PowerShell Module Architect
+      description: "Use when a task needs PowerShell module structure, command design, packaging, or profile architecture work."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/powershell-module-architect.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: powershell-ui-architect
+      path: agents/powershell-ui-architect.toml
+      title: PowerShell UI Architect
+      description: "Use when a task needs PowerShell-based UI work for terminals, forms, WPF, or admin-oriented interactive tooling."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/powershell-ui-architect.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: refactoring-specialist
+      path: agents/refactoring-specialist.toml
+      title: Refactoring Specialist
+      description: "Use when a task needs a low-risk structural refactor that preserves behavior while improving readability, modularity, or maintainability."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/refactoring-specialist.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: slack-expert
+      path: agents/slack-expert.toml
+      title: Slack Expert
+      description: "Use when a task needs Slack platform work involving bots, interactivity, events, workflows, or Slack-specific integration behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/slack-expert.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: tooling-engineer
+      path: agents/tooling-engineer.toml
+      title: Tooling Engineer
+      description: "Use when a task needs internal developer tooling, scripts, automation glue, or workflow support utilities."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/06-developer-experience/tooling-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - developer-experience
+
+    - id: api-documenter
+      path: agents/api-documenter.toml
+      title: API Documenter
+      description: "Use when a task needs consumer-facing API documentation generated from the real implementation, schema, and examples."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/api-documenter.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: blockchain-developer
+      path: agents/blockchain-developer.toml
+      title: Blockchain Developer
+      description: "Use when a task needs blockchain or Web3 implementation and review across smart-contract integration, wallet flows, or transaction lifecycle handling."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/blockchain-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: embedded-systems
+      path: agents/embedded-systems.toml
+      title: Embedded Systems
+      description: "Use when a task needs embedded or hardware-adjacent work involving device constraints, firmware boundaries, timing, or low-level integration."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/embedded-systems.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: fintech-engineer
+      path: agents/fintech-engineer.toml
+      title: Fintech Engineer
+      description: "Use when a task needs financial systems engineering across ledgers, reconciliation, transfers, settlement, or compliance-sensitive transactional flows."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/fintech-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: game-developer
+      path: agents/game-developer.toml
+      title: Game Developer
+      description: "Use when a task needs game-specific implementation or debugging involving gameplay systems, rendering loops, asset flow, or player-state behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/game-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: iot-engineer
+      path: agents/iot-engineer.toml
+      title: IoT Engineer
+      description: "Use when a task needs IoT system work involving devices, telemetry, edge communication, or cloud-device coordination."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/iot-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: m365-admin
+      path: agents/m365-admin.toml
+      title: M365 Admin
+      description: "Use when a task needs Microsoft 365 administration help across Exchange Online, Teams, SharePoint, identity, or tenant-level automation."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/m365-admin.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: mobile-app-developer
+      path: agents/mobile-app-developer.toml
+      title: Mobile App Developer
+      description: "Use when a task needs app-level mobile product work across screens, state, API integration, and release-sensitive mobile behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/mobile-app-developer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: payment-integration
+      path: agents/payment-integration.toml
+      title: Payment Integration
+      description: "Use when a task needs payment-flow review or implementation for checkout, idempotency, webhooks, retries, or settlement state handling."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/payment-integration.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: quant-analyst
+      path: agents/quant-analyst.toml
+      title: Quant Analyst
+      description: "Use when a task needs quantitative analysis of models, strategies, simulations, or numeric decision logic."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/quant-analyst.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: risk-manager
+      path: agents/risk-manager.toml
+      title: Risk Manager
+      description: "Use when a task needs explicit risk analysis for product, operational, financial, or architectural decisions."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/risk-manager.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: seo-specialist
+      path: agents/seo-specialist.toml
+      title: SEO Specialist
+      description: "Use when a task needs search-focused technical review across crawlability, metadata, rendering, information architecture, or content discoverability."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/07-specialized-domains/seo-specialist.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - specialized-domains
+
+    - id: business-analyst
+      path: agents/business-analyst.toml
+      title: Business Analyst
+      description: "Use when a task needs requirements clarified, scope normalized, or acceptance criteria extracted from messy inputs before engineering work starts."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/business-analyst.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: content-marketer
+      path: agents/content-marketer.toml
+      title: Content Marketer
+      description: "Use when a task needs product-adjacent content strategy or messaging that still has to stay grounded in real technical capabilities."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/content-marketer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: customer-success-manager
+      path: agents/customer-success-manager.toml
+      title: Customer Success Manager
+      description: "Use when a task needs support-pattern synthesis, adoption risk analysis, or customer-facing operational guidance from engineering context."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/customer-success-manager.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: legal-advisor
+      path: agents/legal-advisor.toml
+      title: Legal Advisor
+      description: "Use when a task needs legal-risk spotting in product or engineering behavior, especially around terms, data handling, or externally visible commitments."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/legal-advisor.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: product-manager
+      path: agents/product-manager.toml
+      title: Product Manager
+      description: "Use when a task needs product framing, prioritization, or feature-shaping based on engineering reality and user impact."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/product-manager.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: project-manager
+      path: agents/project-manager.toml
+      title: Project Manager
+      description: "Use when a task needs dependency mapping, milestone planning, sequencing, or delivery-risk coordination across multiple workstreams."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/project-manager.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: sales-engineer
+      path: agents/sales-engineer.toml
+      title: Sales Engineer
+      description: "Use when a task needs technically accurate solution positioning, customer-question handling, or implementation tradeoff explanation for pre-sales contexts."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/sales-engineer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: scrum-master
+      path: agents/scrum-master.toml
+      title: Scrum Master
+      description: "Use when a task needs process facilitation, iteration planning, or workflow friction analysis for an engineering team."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/scrum-master.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: technical-writer
+      path: agents/technical-writer.toml
+      title: Technical Writer
+      description: "Use when a task needs release notes, migration notes, onboarding material, or developer-facing prose derived from real code changes."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/technical-writer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: ux-researcher
+      path: agents/ux-researcher.toml
+      title: UX Researcher
+      description: "Use when a task needs UI feedback synthesized into actionable product and implementation guidance."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/ux-researcher.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: wordpress-master
+      path: agents/wordpress-master.toml
+      title: WordPress Master
+      description: "Use when a task needs WordPress-specific implementation or debugging across themes, plugins, content architecture, or operational site behavior."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/08-business-product/wordpress-master.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - business-product
+
+    - id: agent-installer
+      path: agents/agent-installer.toml
+      title: Agent Installer
+      description: "Use when a task needs help selecting, copying, or organizing custom agent files from this repository into Codex agent directories."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/agent-installer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: agent-organizer
+      path: agents/agent-organizer.toml
+      title: Agent Organizer
+      description: "Use when the parent agent needs help choosing subagents and dividing a larger task into clean delegated threads."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/agent-organizer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: context-manager
+      path: agents/context-manager.toml
+      title: Context Manager
+      description: "Use when a task needs a compact project context summary that other subagents can rely on before deeper work begins."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/context-manager.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: error-coordinator
+      path: agents/error-coordinator.toml
+      title: Error Coordinator
+      description: "Use when multiple errors or symptoms need to be grouped, prioritized, and assigned to the right debugging or review agents."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/error-coordinator.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: it-ops-orchestrator
+      path: agents/it-ops-orchestrator.toml
+      title: IT Ops Orchestrator
+      description: "Use when a task needs coordinated operational planning across infrastructure, incident response, identity, endpoint, and admin workflows."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/it-ops-orchestrator.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: knowledge-synthesizer
+      path: agents/knowledge-synthesizer.toml
+      title: Knowledge Synthesizer
+      description: "Use when multiple agents have returned findings and the parent agent needs a distilled, non-redundant synthesis."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/knowledge-synthesizer.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: multi-agent-coordinator
+      path: agents/multi-agent-coordinator.toml
+      title: Multi Agent Coordinator
+      description: "Use when a task needs a concrete multi-agent plan with clear role separation, dependencies, and result integration."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/multi-agent-coordinator.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: performance-monitor
+      path: agents/performance-monitor.toml
+      title: Performance Monitor
+      description: "Use when a task needs ongoing performance-signal interpretation across build, runtime, or operational metrics before deeper optimization starts."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/performance-monitor.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: task-distributor
+      path: agents/task-distributor.toml
+      title: Task Distributor
+      description: "Use when a broad task needs to be broken into concrete sub-tasks with clear boundaries for multiple agents or contributors."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/task-distributor.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: workflow-orchestrator
+      path: agents/workflow-orchestrator.toml
+      title: Workflow Orchestrator
+      description: "Use when the parent agent needs an explicit Codex subagent workflow for a complex task with multiple stages."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/09-meta-orchestration/workflow-orchestrator.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - meta-orchestration
+
+    - id: competitive-analyst
+      path: agents/competitive-analyst.toml
+      title: Competitive Analyst
+      description: "Use when a task needs a grounded comparison of tools, products, libraries, or implementation options."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/10-research-analysis/competitive-analyst.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - research-analysis
+
+    - id: data-researcher
+      path: agents/data-researcher.toml
+      title: Data Researcher
+      description: "Use when a task needs source gathering and synthesis around datasets, metrics, data pipelines, or evidence-backed quantitative questions."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/10-research-analysis/data-researcher.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - research-analysis
+
+    - id: docs-researcher
+      path: agents/docs-researcher.toml
+      title: Docs Researcher
+      description: "Use when a task needs documentation-backed verification of APIs, version-specific behavior, or framework options."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/10-research-analysis/docs-researcher.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - research-analysis
+
+    - id: market-researcher
+      path: agents/market-researcher.toml
+      title: Market Researcher
+      description: "Use when a task needs market landscape, positioning, or demand-side research tied to a technical product or category."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/10-research-analysis/market-researcher.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - research-analysis
+
+    - id: research-analyst
+      path: agents/research-analyst.toml
+      title: Research Analyst
+      description: "Use when a task needs a structured investigation of a technical topic, implementation approach, or design question."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/10-research-analysis/research-analyst.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - research-analysis
+
+    - id: search-specialist
+      path: agents/search-specialist.toml
+      title: Search Specialist
+      description: "Use when a task needs fast, high-signal searching of the codebase or external sources before deeper analysis begins."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/10-research-analysis/search-specialist.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - research-analysis
+
+    - id: trend-analyst
+      path: agents/trend-analyst.toml
+      title: Trend Analyst
+      description: "Use when a task needs trend synthesis across technology shifts, adoption patterns, or emerging implementation directions."
+      origin: third_party
+      owner: "@agrbe"
+      license: MIT
+      source_repo: VoltAgent/awesome-codex-subagents
+      source_path: categories/10-research-analysis/trend-analyst.toml
+      modified_from_source: false
+      status: draft
+      tags:
+        - codex
+        - subagent
+        - research-analysis
 
   skills:
     - id: intake-skill

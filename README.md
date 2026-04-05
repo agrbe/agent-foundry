@@ -19,6 +19,7 @@ At this stage, it contains:
 - initial catalog metadata
 - supporting documentation
 - initial native skill definitions
+- Codex subagents under `agents/`
 
 ## Goals
 
@@ -40,6 +41,7 @@ agent-foundry/
 ├─ NOTICE
 ├─ README.md
 ├─ registry.yaml
+├─ agents/
 ├─ docs/
 ├─ skills/
 └─ third_party/
@@ -49,10 +51,10 @@ agent-foundry/
 Planned future areas may include:
 
 ```text
-agents/
 mcp/
 catalog/
 templates/
+hooks/
 scripts/
 ```
 
@@ -104,7 +106,7 @@ Planned next steps include:
 
 1. define the initial catalog model
 2. establish import and adaptation rules
-3. add the first native or adapted agents
+3. curate imported agents and add the first native or adapted agents
 4. expand the initial skill definitions
 5. add MCP integration templates
 6. introduce validation and maintenance workflows
