@@ -1,0 +1,13 @@
+id: foundry-yaml-builder
+title: Foundry YAML Builder
+origin: native
+owner: "@agrbe"
+license: Apache-2.0
+source_repo: ""
+source_path: ""
+modified_from_source: false
+status: draft
+tags:
+  - workflow
+  - metadata
+  - governance

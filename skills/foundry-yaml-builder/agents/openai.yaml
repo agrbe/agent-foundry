@@ -1,0 +1,4 @@
+interface:
+  display_name: "Foundry YAML Builder"
+  short_description: "Generate skill foundry metadata"
+  default_prompt: "Use $foundry-yaml-builder to create or update foundry.yaml for a skill in this repository."

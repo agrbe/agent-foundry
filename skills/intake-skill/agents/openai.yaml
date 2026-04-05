@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Intake"
+  short_description: "Register skills with provenance"
+  default_prompt: "Use $intake-skill to validate a new skill folder, collect provenance, and update the skill catalog."

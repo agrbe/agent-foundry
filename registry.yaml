@@ -24,5 +24,50 @@ policies:
 
 catalog:
   agents: []
-  skills: []
+  skills:
+    - id: intake-skill
+      path: skills/intake-skill
+      title: Intake Skill
+      description: Validate and register newly added skill folders with provenance, licensing, and catalog updates. Use when Codex needs to inspect a folder under `skills/`, verify the minimum skill structure, read `skill.meta.yaml` when present, classify the skill as `native`, `third_party`, or `adapted`, ask concise follow-up questions for missing provenance, propose updates to `registry.yaml`, and optionally update `third_party/THIRD_PARTY_NOTICES.md` before applying any edits.
+      origin: native
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: ""
+      source_path: ""
+      modified_from_source: false
+      status: draft
+      tags:
+        - workflow
+        - catalog
+        - provenance
+    - id: git-commit-message
+      path: skills/git-commit-message
+      title: Git Commit Message
+      description: Draft, refine, and review Git commit messages using clear subject/body/footer conventions and optional Conventional Commits typing. Use when Codex needs to generate a commit message from staged changes, diffs, or a described code change, validate an existing commit message against best practices, or explain how to structure commit history for readable logs and changelogs.
+      origin: native
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: ""
+      source_path: ""
+      modified_from_source: false
+      status: draft
+      tags:
+        - github
+        - docs
+        - workflow
+    - id: foundry-yaml-builder
+      path: skills/foundry-yaml-builder
+      title: Foundry YAML Builder
+      description: Generate, fill, and normalize `foundry.yaml` for skills in the `agent-foundry` repository. Use when Codex needs to create a missing `foundry.yaml`, rebuild one from `SKILL.md` and repository defaults, switch between the simple repository format and the full spec template, or populate provenance fields for `native`, `third_party`, or `adapted` skills under `skills/`.
+      origin: native
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: ""
+      source_path: ""
+      modified_from_source: false
+      status: draft
+      tags:
+        - workflow
+        - metadata
+        - governance
   mcps: []

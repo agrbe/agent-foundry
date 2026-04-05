@@ -18,8 +18,7 @@ At this stage, it contains:
 - licensing and notice files
 - initial catalog metadata
 - supporting documentation
-
-It does **not** yet include imported or native agents, skills, or MCP definitions.
+- initial native skill definitions
 
 ## Goals
 
@@ -42,6 +41,7 @@ agent-foundry/
 ├─ README.md
 ├─ registry.yaml
 ├─ docs/
+├─ skills/
 └─ third_party/
    └─ THIRD_PARTY_NOTICES.md
 ```
@@ -50,7 +50,6 @@ Planned future areas may include:
 
 ```text
 agents/
-skills/
 mcp/
 catalog/
 templates/
@@ -106,7 +105,7 @@ Planned next steps include:
 1. define the initial catalog model
 2. establish import and adaptation rules
 3. add the first native or adapted agents
-4. add initial skill definitions
+4. expand the initial skill definitions
 5. add MCP integration templates
 6. introduce validation and maintenance workflows
 
