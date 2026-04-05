@@ -7,6 +7,14 @@ Unless otherwise stated:
 - Imported or adapted third-party materials remain subject to their original licenses.
 - Attribution notices for third-party materials must be preserved.
 
+## Included Third-Party Sources
+
+### 1. openai/skills
+- Upstream repository: `https://github.com/openai/skills`
+- Upstream license: Apache-2.0
+- Intended use in this repository: imported or adapted codex skills and related metadata
+- Attribution requirement: preserve the original copyright and license notice in copies or substantial portions
+
 ## Distribution Policy
 
 When material is copied or adapted from a third-party source:

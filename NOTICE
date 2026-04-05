@@ -8,6 +8,11 @@ Where third-party material is included or adapted, the original authors,
 repositories, and applicable licenses must be preserved according to the
 terms of those licenses.
 
+Third-party sources currently identified for inclusion and/or adaptation
+include:
+
+- openai/skills (Apache-2.0)
+
 Additional attribution, provenance, and third-party notice details are
 maintained in:
 

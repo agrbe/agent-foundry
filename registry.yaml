@@ -24,6 +24,7 @@ policies:
 
 catalog:
   agents: []
+
   skills:
     - id: intake-skill
       path: skills/intake-skill
