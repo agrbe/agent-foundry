@@ -1,0 +1,28 @@
+agent-foundry
+Copyright (c) 2026 Alexandre Garbelini Filho
+
+This repository is distributed under the Apache License, Version 2.0.
+
+This repository may include or adapt selected third-party materials.
+Where third-party material is included or adapted, the original authors,
+repositories, and applicable licenses must be preserved according to the
+terms of those licenses.
+
+Additional attribution, provenance, and third-party notice details are
+maintained in:
+
+- third_party/THIRD_PARTY_NOTICES.md
+- third_party/licenses/
+
+If a file is imported or adapted from an upstream project, that file or its
+adjacent metadata should clearly indicate:
+
+- the upstream source repository and path
+- the original license
+- whether modifications were made
+- who made the modifications, when applicable
+
+Unless otherwise noted, original content created specifically for
+agent-foundry is intended to be licensed under the repository's root
+Apache-2.0 license. Third-party materials remain subject to their own
+applicable license terms.

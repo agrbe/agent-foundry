@@ -1,0 +1,28 @@
+version: 1
+
+repo:
+  name: agent-foundry
+  description: Shared repository for agents, skills, and MCP integrations for Codex and Claude Code.
+  license: Apache-2.0
+  visibility: private
+  default_owner: "@agrbe"
+  owners:
+    - "@agrbe"
+  maintainers: []
+  homepage: ""
+  repository_url: ""
+  created_at: "2026-04-03"
+  updated_at: "2026-04-04"
+
+policies:
+  third_party_licenses_allowed:
+    - MIT
+    - Apache-2.0
+  attribution_required: true
+  allow_modifications_of_imported_artifacts: true
+  require_provenance_for_imports: true
+
+catalog:
+  agents: []
+  skills: []
+  mcps: []
