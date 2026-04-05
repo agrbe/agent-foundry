@@ -1,4 +1,4 @@
 interface:
-  display_name: "Foundry Intake"
+  display_name: "Foundry Provenance"
   short_description: "Register foundry components safely"
   default_prompt: "Use $register-foundry-component to add this skill, agent, MCP, hook, or other repo artifact with complete provenance, licensing, and registry updates."
