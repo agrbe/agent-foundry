@@ -65,7 +65,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/01-core-development/code-mapper.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -193,7 +193,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/01-core-development/ui-fixer.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -753,7 +753,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/03-infrastructure/docker-expert.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -881,7 +881,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/03-infrastructure/terragrunt-expert.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1041,7 +1041,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/04-quality-security/error-detective.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1153,7 +1153,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/04-quality-security/test-automator.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1185,7 +1185,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/05-data-ai/data-analyst.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1361,7 +1361,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/06-developer-experience/build-engineer.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1393,7 +1393,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/06-developer-experience/dependency-manager.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1409,7 +1409,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/06-developer-experience/documentation-engineer.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1441,7 +1441,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/06-developer-experience/git-workflow-manager.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1553,7 +1553,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/06-developer-experience/tooling-engineer.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1569,7 +1569,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/07-specialized-domains/api-documenter.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1745,7 +1745,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/07-specialized-domains/seo-specialist.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1777,7 +1777,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/08-business-product/content-marketer.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1793,7 +1793,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/08-business-product/customer-success-manager.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1857,7 +1857,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/08-business-product/sales-engineer.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1873,7 +1873,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/08-business-product/scrum-master.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1889,7 +1889,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/08-business-product/technical-writer.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1937,7 +1937,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/09-meta-orchestration/agent-installer.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -1969,7 +1969,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/09-meta-orchestration/context-manager.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -2017,7 +2017,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/09-meta-orchestration/knowledge-synthesizer.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -2049,7 +2049,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/09-meta-orchestration/performance-monitor.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -2097,7 +2097,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/10-research-analysis/competitive-analyst.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -2113,7 +2113,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/10-research-analysis/data-researcher.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -2129,7 +2129,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/10-research-analysis/docs-researcher.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -2145,7 +2145,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/10-research-analysis/market-researcher.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -2177,7 +2177,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/10-research-analysis/search-specialist.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex
@@ -2193,7 +2193,7 @@ catalog:
       license: MIT
       source_repo: VoltAgent/awesome-codex-subagents
       source_path: categories/10-research-analysis/trend-analyst.toml
-      modified_from_source: false
+      modified_from_source: true
       status: draft
       tags:
         - codex

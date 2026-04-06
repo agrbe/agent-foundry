@@ -64,7 +64,7 @@ notes:
 - Origin: `third_party`
 - Source: `VoltAgent/awesome-codex-subagents` (`categories/*/*.toml`)
 - License: `MIT`
-- Modified: `no` for imported upstream files
+- Modified: `mixed`; 29 imported upstream files were updated locally
 - Owner: `@agrbe`
 - Status: `draft`
 
