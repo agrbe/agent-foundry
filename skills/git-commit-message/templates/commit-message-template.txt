@@ -1,0 +1,37 @@
+# Commit message template
+#
+# Use your repository's convention first.
+#
+# Suggested formats:
+#   Plain:
+#     Subject
+#
+#     Why this change exists and the high-level behavior change.
+#
+#     Optional trailers
+#
+#   Conventional Commits:
+#     type(scope): description
+#
+#     Why this change exists and the high-level behavior change.
+#
+#     Optional trailers
+#
+# Subject guidance:
+# - describe one coherent change
+# - keep it specific and standalone
+# - omit trailing period
+# - avoid vague summaries like "fix stuff" or "misc"
+#
+# Body guidance:
+# - explain why when the reason is not obvious
+# - capture trade-offs or side effects
+# - do not replay the full diff
+#
+# Trailer examples:
+# Closes: #123
+# Fixes: #456
+# BREAKING CHANGE: explain the incompatible change
+# Co-authored-by: Name <email@example.com>
+# Signed-off-by: Name <email@example.com>
+

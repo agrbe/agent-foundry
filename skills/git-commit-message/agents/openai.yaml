@@ -1,4 +1,4 @@
 interface:
-  display_name: "Commit Message Guide"
-  short_description: "Draft clear Git commit messages"
-  default_prompt: "Use $git-commit-message to draft a commit message from my staged changes."
+  display_name: "Git Commit Message"
+  short_description: "Draft, review, and rewrite commit messages"
+  default_prompt: "Use $git-commit-message to draft or review a commit message from my staged changes, diff, or current repository conventions."
