@@ -1,0 +1,613 @@
+version: 1
+
+policies:
+  activation_model: both_layers
+  canonical_skill: skills/multi-agent-router/SKILL.md
+  prompt_summary: skills/multi-agent-router/references/prompt-summary.md
+  visibility: on_override_or_spawn
+  specialist_bias: prefer_specialist_when_materially_better
+  generic_fallback: always_fallback_generic
+  parent_thread_owns:
+    - requirements
+    - constraints
+    - acceptance_criteria
+    - key_decisions
+    - final_synthesis
+  explanation_rules:
+    explain_delegation_advantage: true
+    explain_solo_override_under_specialist_pressure: true
+    explain_why_not_more_agents: true
+
+decision_model:
+  modes:
+    solo:
+      use_when:
+        - one bounded deliverable
+        - low uncertainty
+        - low coordination risk
+        - delegation would mostly duplicate repo reading
+      avoid_when:
+        - a strong specialist materially improves quality or speed
+        - multiple independent review dimensions are required
+        - cross-boundary work has clearly separable ownership
+        - discovery or validation can run in parallel with implementation
+    single_delegate:
+      use_when:
+        - one primary deliverable dominates the task
+        - one strong specialist match clearly owns the path
+        - the parent thread mainly needs to preserve context and synthesis
+      avoid_when:
+        - specialist fit is weak
+        - the work naturally splits into independent tracks
+        - delegation would block the immediate next local step
+    multi_agent:
+      use_when:
+        - there are multiple independent workstreams
+        - multiple review dimensions are requested
+        - cross-boundary work has explicit ownership splits
+        - read-only discovery or validation can proceed in parallel
+      avoid_when:
+        - work is tightly coupled and serial
+        - more agents would mostly reread the same context
+        - write ownership would overlap
+  strong_specialist_pressure:
+    - the task cleanly matches a curated route in `agent_routes`
+    - the request explicitly asks for review, audit, debugging, performance, or security expertise
+    - the domain is high-risk or verification-heavy
+  anti_patterns:
+    - delegate only because many files might be involved
+    - delegate the immediate blocking step that the parent must perform next
+    - use multiple write-capable delegates with overlapping ownership
+    - choose multi-agent execution when one specialist can own the main path
+  output_contract:
+    visible_fields:
+      - mode
+      - primary_goal
+      - work_mode
+      - domain
+      - selected_agents
+      - why_this_is_better_than_solo
+      - why_not_more_agents
+      - why_not_specialists
+      - parent_ownership
+      - delegate_ownership
+      - confidence
+
+built_in_roles:
+  default:
+    role_type: generic
+    execution_type: write_capable
+    use_when:
+      - delegation still helps but no curated specialist is a strong fit
+      - the task is bounded and not domain-sensitive
+  explorer:
+    role_type: generic
+    execution_type: read_only
+    use_when:
+      - discovery still helps but no curated read-only specialist is a strong fit
+      - the fastest next step is evidence gathering
+  worker:
+    role_type: generic
+    execution_type: write_capable
+    use_when:
+      - the work should be delegated but the repo lacks a stronger implementation specialist
+      - file ownership can still be bounded clearly
+
+work_modes:
+  discovery: Reduce uncertainty before changing code or choosing a fix.
+  review: Critique correctness, security, architecture, performance, or test quality.
+  implementation: Make bounded code or content changes.
+  validation: Run tests, checks, or targeted verification.
+  synthesis: Merge multiple findings into one parent-thread decision.
+
+domains:
+  orchestration: Task decomposition, coordination, and result integration.
+  frontend: Browser, UI, UX, and client runtime behavior.
+  backend: APIs, services, integrations, and server-side implementation.
+  security: Security review, hardening, abuse-path analysis, and compliance.
+  data: Database, query, analytics, and model-adjacent work.
+  infrastructure: Build, deployment, containers, cloud, and operational reliability.
+  docs: Documentation, prompt behavior, and developer-facing guidance.
+
+route_groups:
+  orchestration:
+    - agent-organizer
+    - context-manager
+    - knowledge-synthesizer
+    - multi-agent-coordinator
+    - task-distributor
+    - workflow-orchestrator
+  discovery_review:
+    - code-mapper
+    - search-specialist
+    - reviewer
+    - code-reviewer
+    - architect-reviewer
+    - debugger
+    - error-detective
+    - qa-expert
+    - test-automator
+    - performance-engineer
+    - browser-debugger
+    - accessibility-tester
+  security_compliance:
+    - security-auditor
+    - security-engineer
+    - penetration-tester
+    - compliance-auditor
+  frontend_ui:
+    - frontend-developer
+    - react-specialist
+    - nextjs-developer
+    - typescript-pro
+    - ui-designer
+    - ui-fixer
+  backend_ai:
+    - backend-developer
+    - fullstack-developer
+    - api-designer
+    - mcp-developer
+    - ai-engineer
+    - llm-architect
+    - prompt-engineer
+    - python-pro
+  data_database:
+    - database-administrator
+    - database-optimizer
+    - sql-pro
+    - postgres-pro
+  infrastructure_ops:
+    - build-engineer
+    - deployment-engineer
+    - devops-engineer
+    - docker-expert
+    - kubernetes-specialist
+    - platform-engineer
+  docs_and_guidance:
+    - documentation-engineer
+    - docs-researcher
+    - technical-writer
+
+agent_routes:
+  agent-organizer:
+    work_modes: [discovery, synthesis]
+    domains: [orchestration]
+    execution_type: read_only
+    preferred_for: [task_decomposition, subagent_lineup, ownership_boundaries]
+    avoid_for: [direct_implementation]
+    pair_with: [multi-agent-coordinator, workflow-orchestrator]
+    fallback_priority: 95
+  context-manager:
+    work_modes: [discovery, synthesis]
+    domains: [orchestration]
+    execution_type: read_only
+    preferred_for: [context_packaging, architecture_snapshot, delegate_onboarding]
+    avoid_for: [direct_implementation]
+    pair_with: [agent-organizer, knowledge-synthesizer]
+    fallback_priority: 85
+  knowledge-synthesizer:
+    work_modes: [synthesis]
+    domains: [orchestration, docs]
+    execution_type: read_only
+    preferred_for: [merge_findings, conflict_resolution, concise_summary]
+    avoid_for: [initial_discovery, direct_implementation]
+    pair_with: [agent-organizer, reviewer]
+    fallback_priority: 90
+  multi-agent-coordinator:
+    work_modes: [discovery, synthesis]
+    domains: [orchestration]
+    execution_type: read_only
+    preferred_for: [parallel_plan, dependency_management, integration_checkpoints]
+    avoid_for: [direct_implementation]
+    pair_with: [agent-organizer, workflow-orchestrator]
+    fallback_priority: 95
+  task-distributor:
+    work_modes: [discovery]
+    domains: [orchestration]
+    execution_type: read_only
+    preferred_for: [subtask_splitting, task_boundaries]
+    avoid_for: [final_synthesis]
+    pair_with: [agent-organizer, multi-agent-coordinator]
+    fallback_priority: 80
+  workflow-orchestrator:
+    work_modes: [discovery, synthesis]
+    domains: [orchestration]
+    execution_type: read_only
+    preferred_for: [execution_stages, wait_points, validation_gates]
+    avoid_for: [direct_implementation]
+    pair_with: [multi-agent-coordinator, agent-organizer]
+    fallback_priority: 95
+  code-mapper:
+    work_modes: [discovery]
+    domains: [frontend, backend, data, infrastructure, docs]
+    execution_type: read_only
+    preferred_for: [owning_path_mapping, entrypoints, boundary_tracing]
+    avoid_for: [small_obvious_changes]
+    pair_with: [search-specialist, debugger]
+    fallback_priority: 100
+  search-specialist:
+    work_modes: [discovery]
+    domains: [frontend, backend, security, data, infrastructure, docs]
+    execution_type: read_only
+    preferred_for: [fast_repo_search, external_lookup, clue_gathering]
+    avoid_for: [final_synthesis]
+    pair_with: [code-mapper, reviewer]
+    fallback_priority: 90
+  reviewer:
+    work_modes: [review]
+    domains: [frontend, backend, security, data, infrastructure, docs]
+    execution_type: read_only
+    preferred_for: [correctness_review, regression_review, branch_review]
+    avoid_for: [implementation]
+    pair_with: [security-auditor, qa-expert]
+    fallback_priority: 100
+  code-reviewer:
+    work_modes: [review]
+    domains: [frontend, backend, docs]
+    execution_type: read_only
+    preferred_for: [maintainability_review, design_review]
+    avoid_for: [implementation]
+    pair_with: [reviewer, architect-reviewer]
+    fallback_priority: 75
+  architect-reviewer:
+    work_modes: [review]
+    domains: [backend, infrastructure, docs]
+    execution_type: read_only
+    preferred_for: [boundary_review, architecture_pressure, long_term_shape]
+    avoid_for: [small_local_fixes]
+    pair_with: [reviewer, code-reviewer]
+    fallback_priority: 70
+  debugger:
+    work_modes: [discovery, review]
+    domains: [frontend, backend, infrastructure, data]
+    execution_type: read_only
+    preferred_for: [bug_isolation, failing_tests, runtime_path_investigation]
+    avoid_for: [pure_design_work]
+    pair_with: [error-detective, code-mapper]
+    fallback_priority: 100
+  error-detective:
+    work_modes: [discovery, review]
+    domains: [backend, infrastructure, data]
+    execution_type: read_only
+    preferred_for: [logs, exceptions, stack_traces]
+    avoid_for: [implementation]
+    pair_with: [debugger, search-specialist]
+    fallback_priority: 90
+  qa-expert:
+    work_modes: [review, validation]
+    domains: [frontend, backend, infrastructure]
+    execution_type: read_only
+    preferred_for: [test_strategy, acceptance_coverage, release_risk]
+    avoid_for: [direct_implementation]
+    pair_with: [reviewer, test-automator]
+    fallback_priority: 95
+  test-automator:
+    work_modes: [implementation, validation]
+    domains: [frontend, backend, data, infrastructure]
+    execution_type: write_capable
+    preferred_for: [automated_tests, regression_coverage, harness_improvements]
+    avoid_for: [product_design]
+    pair_with: [qa-expert, reviewer]
+    fallback_priority: 85
+  performance-engineer:
+    work_modes: [discovery, review, validation]
+    domains: [frontend, backend, infrastructure, data]
+    execution_type: read_only
+    preferred_for: [performance_investigation, bottleneck_analysis, scalability_review]
+    avoid_for: [small_nonperformance_fixes]
+    pair_with: [reviewer, debugger]
+    fallback_priority: 80
+  browser-debugger:
+    work_modes: [discovery, validation]
+    domains: [frontend]
+    execution_type: read_only
+    preferred_for: [ui_flow_debugging, interactive_repro, browser_behavior]
+    avoid_for: [backend_only_tasks]
+    pair_with: [frontend-developer, accessibility-tester]
+    fallback_priority: 80
+  accessibility-tester:
+    work_modes: [review, validation]
+    domains: [frontend]
+    execution_type: read_only
+    preferred_for: [a11y_checks, keyboard_flow, screen_reader_risk]
+    avoid_for: [backend_only_tasks]
+    pair_with: [browser-debugger, frontend-developer]
+    fallback_priority: 75
+  security-auditor:
+    work_modes: [review]
+    domains: [security, backend, infrastructure]
+    execution_type: read_only
+    preferred_for: [security_review, auth_risk, secrets_handling, input_validation]
+    avoid_for: [low_risk_content_edits]
+    pair_with: [reviewer, security-engineer]
+    fallback_priority: 100
+  security-engineer:
+    work_modes: [implementation, review]
+    domains: [security, backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [hardening_changes, security_controls, remediation]
+    avoid_for: [nonsecurity_maintenance]
+    pair_with: [security-auditor, reviewer]
+    fallback_priority: 85
+  penetration-tester:
+    work_modes: [review]
+    domains: [security]
+    execution_type: read_only
+    preferred_for: [exploitability, abuse_cases, attacker_mindset]
+    avoid_for: [routine_maintainability_review]
+    pair_with: [security-auditor, compliance-auditor]
+    fallback_priority: 70
+  compliance-auditor:
+    work_modes: [review]
+    domains: [security, docs]
+    execution_type: read_only
+    preferred_for: [control_mapping, regulated_requirements, compliance_gap_review]
+    avoid_for: [general_debugging]
+    pair_with: [security-auditor, technical-writer]
+    fallback_priority: 65
+  frontend-developer:
+    work_modes: [implementation, validation]
+    domains: [frontend]
+    execution_type: write_capable
+    preferred_for: [ui_bug_fixes, bounded_frontend_changes, user_flow_repairs]
+    avoid_for: [backend_only_tasks]
+    pair_with: [browser-debugger, accessibility-tester]
+    fallback_priority: 95
+  react-specialist:
+    work_modes: [implementation, review, validation]
+    domains: [frontend]
+    execution_type: write_capable
+    preferred_for: [react_state_flow, rendering_bugs, component_behavior]
+    avoid_for: [framework_agnostic_content_work]
+    pair_with: [frontend-developer, browser-debugger]
+    fallback_priority: 100
+  nextjs-developer:
+    work_modes: [implementation, review, validation]
+    domains: [frontend, backend]
+    execution_type: write_capable
+    preferred_for: [nextjs_routes, app_router, server_client_boundaries]
+    avoid_for: [non_nextjs_frontends]
+    pair_with: [react-specialist, backend-developer]
+    fallback_priority: 90
+  typescript-pro:
+    work_modes: [implementation, review]
+    domains: [frontend, backend, docs]
+    execution_type: write_capable
+    preferred_for: [type_system_changes, typing_cleanup, ts_specific_patterns]
+    avoid_for: [non_typescript_stacks]
+    pair_with: [frontend-developer, backend-developer]
+    fallback_priority: 75
+  ui-designer:
+    work_modes: [discovery, implementation]
+    domains: [frontend]
+    execution_type: write_capable
+    preferred_for: [interface_direction, implementation_ready_ui_specs]
+    avoid_for: [tiny_local_fixes]
+    pair_with: [frontend-developer, ux-researcher]
+    fallback_priority: 60
+  ui-fixer:
+    work_modes: [implementation, validation]
+    domains: [frontend]
+    execution_type: write_capable
+    preferred_for: [small_safe_ui_patch, reproduced_visual_bug]
+    avoid_for: [broad_redesign]
+    pair_with: [frontend-developer, browser-debugger]
+    fallback_priority: 70
+  backend-developer:
+    work_modes: [implementation, validation]
+    domains: [backend]
+    execution_type: write_capable
+    preferred_for: [service_changes, api_fixes, backend_feature_work]
+    avoid_for: [frontend_only_tasks]
+    pair_with: [api-designer, reviewer]
+    fallback_priority: 95
+  fullstack-developer:
+    work_modes: [implementation, validation]
+    domains: [frontend, backend]
+    execution_type: write_capable
+    preferred_for: [cohesive_cross_boundary_feature, one_owner_path]
+    avoid_for: [work_that_needs_split_ownership]
+    pair_with: [reviewer, qa-expert]
+    fallback_priority: 85
+  api-designer:
+    work_modes: [discovery, review]
+    domains: [backend, docs]
+    execution_type: read_only
+    preferred_for: [api_contracts, compatibility_review, interface_planning]
+    avoid_for: [pure_ui_tasks]
+    pair_with: [backend-developer, technical-writer]
+    fallback_priority: 70
+  mcp-developer:
+    work_modes: [implementation, review, validation]
+    domains: [backend, docs]
+    execution_type: write_capable
+    preferred_for: [mcp_protocol_work, tool_wiring, server_integration]
+    avoid_for: [unrelated_backend_work]
+    pair_with: [ai-engineer, backend-developer]
+    fallback_priority: 90
+  ai-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [backend, docs]
+    execution_type: write_capable
+    preferred_for: [model_backed_features, agent_flows, evaluation_hooks]
+    avoid_for: [non_ai_maintenance]
+    pair_with: [llm-architect, prompt-engineer]
+    fallback_priority: 90
+  llm-architect:
+    work_modes: [discovery, review]
+    domains: [backend, docs]
+    execution_type: read_only
+    preferred_for: [agent_system_design, model_system_shape, evaluation_architecture]
+    avoid_for: [small_local_prompts]
+    pair_with: [ai-engineer, prompt-engineer]
+    fallback_priority: 80
+  prompt-engineer:
+    work_modes: [implementation, review]
+    domains: [docs, backend]
+    execution_type: write_capable
+    preferred_for: [prompt_behavior, instruction_tuning, response_quality]
+    avoid_for: [pure_infra_tasks]
+    pair_with: [ai-engineer, llm-architect]
+    fallback_priority: 85
+  python-pro:
+    work_modes: [implementation, review, validation]
+    domains: [backend, data, infrastructure]
+    execution_type: write_capable
+    preferred_for: [python_runtime_behavior, typing, packaging, tests]
+    avoid_for: [non_python_stacks]
+    pair_with: [backend-developer, test-automator]
+    fallback_priority: 80
+  database-administrator:
+    work_modes: [implementation, review, validation]
+    domains: [data, infrastructure]
+    execution_type: write_capable
+    preferred_for: [db_safety, schema_ops, operational_db_changes]
+    avoid_for: [simple_query_tuning_only]
+    pair_with: [database-optimizer, postgres-pro]
+    fallback_priority: 75
+  database-optimizer:
+    work_modes: [review, validation]
+    domains: [data]
+    execution_type: read_only
+    preferred_for: [query_performance, plan_review, db_bottlenecks]
+    avoid_for: [non_database_tasks]
+    pair_with: [sql-pro, postgres-pro]
+    fallback_priority: 80
+  sql-pro:
+    work_modes: [implementation, review]
+    domains: [data]
+    execution_type: write_capable
+    preferred_for: [sql_authoring, query_logic, report_queries]
+    avoid_for: [non_sql_data_tasks]
+    pair_with: [database-optimizer, postgres-pro]
+    fallback_priority: 75
+  postgres-pro:
+    work_modes: [implementation, review, validation]
+    domains: [data, infrastructure]
+    execution_type: write_capable
+    preferred_for: [postgres_specific_behavior, indexing, migrations]
+    avoid_for: [non_postgres_stacks]
+    pair_with: [database-administrator, sql-pro]
+    fallback_priority: 80
+  build-engineer:
+    work_modes: [implementation, validation]
+    domains: [infrastructure]
+    execution_type: write_capable
+    preferred_for: [build_failures, ci_pipelines, toolchain_breakage]
+    avoid_for: [runtime_incidents]
+    pair_with: [devops-engineer, dependency-manager]
+    fallback_priority: 85
+  deployment-engineer:
+    work_modes: [implementation, validation]
+    domains: [infrastructure]
+    execution_type: write_capable
+    preferred_for: [release_process, deployment_steps, rollout_mechanics]
+    avoid_for: [local_feature_work]
+    pair_with: [devops-engineer, platform-engineer]
+    fallback_priority: 80
+  devops-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [infrastructure]
+    execution_type: write_capable
+    preferred_for: [infra_automation, runtime_reliability, operations_work]
+    avoid_for: [application_only_tasks]
+    pair_with: [build-engineer, deployment-engineer]
+    fallback_priority: 95
+  docker-expert:
+    work_modes: [implementation, review, validation]
+    domains: [infrastructure]
+    execution_type: write_capable
+    preferred_for: [containerization, dockerfile_issues, image_builds]
+    avoid_for: [non_container_work]
+    pair_with: [devops-engineer, kubernetes-specialist]
+    fallback_priority: 75
+  kubernetes-specialist:
+    work_modes: [implementation, review, validation]
+    domains: [infrastructure]
+    execution_type: write_capable
+    preferred_for: [k8s_manifests, cluster_rollout, workload_debugging]
+    avoid_for: [non_kubernetes_stacks]
+    pair_with: [devops-engineer, platform-engineer]
+    fallback_priority: 75
+  platform-engineer:
+    work_modes: [implementation, review]
+    domains: [infrastructure, backend]
+    execution_type: write_capable
+    preferred_for: [platform_boundaries, runtime_platform_design, shared_tooling]
+    avoid_for: [tiny_local_code_fixes]
+    pair_with: [devops-engineer, build-engineer]
+    fallback_priority: 70
+  documentation-engineer:
+    work_modes: [implementation, review]
+    domains: [docs, backend]
+    execution_type: write_capable
+    preferred_for: [developer_docs, integration_docs, technical_explanations]
+    avoid_for: [code_only_tasks]
+    pair_with: [docs-researcher, technical-writer]
+    fallback_priority: 80
+  docs-researcher:
+    work_modes: [discovery, review]
+    domains: [docs]
+    execution_type: read_only
+    preferred_for: [source_gathering, doc_fact_checking, reference_collection]
+    avoid_for: [implementation]
+    pair_with: [documentation-engineer, technical-writer]
+    fallback_priority: 70
+  technical-writer:
+    work_modes: [implementation, review, synthesis]
+    domains: [docs]
+    execution_type: write_capable
+    preferred_for: [user_facing_docs, structured_writeups, concise_final_copy]
+    avoid_for: [source_code_debugging]
+    pair_with: [documentation-engineer, knowledge-synthesizer]
+    fallback_priority: 80
+
+decision_examples:
+  - id: explain_one_function
+    prompt: "What does this function do?"
+    expected_mode: solo
+    work_mode: discovery
+    domain: backend
+    recommended_agents: []
+  - id: react_bug_fix
+    prompt: "Fix this React rendering bug and validate the user flow."
+    expected_mode: single_delegate
+    work_mode: implementation
+    domain: frontend
+    recommended_agents: [react-specialist]
+  - id: python_runtime_fix
+    prompt: "Fix this Python runtime bug and add regression coverage."
+    expected_mode: single_delegate
+    work_mode: implementation
+    domain: backend
+    recommended_agents: [python-pro]
+  - id: pr_review_multi_dimension
+    prompt: "Review this branch for bugs, security risks, and test gaps."
+    expected_mode: multi_agent
+    work_mode: review
+    domain: backend
+    recommended_agents: [reviewer, security-auditor, qa-expert]
+  - id: unclear_login_failure
+    prompt: "Investigate why login sometimes fails in production; there is no repro."
+    expected_mode: multi_agent
+    work_mode: discovery
+    domain: backend
+    recommended_agents: [code-mapper, error-detective, debugger]
+  - id: cohesive_cross_boundary_feature
+    prompt: "Implement this small cross-boundary feature end-to-end in one cohesive path."
+    expected_mode: single_delegate
+    work_mode: implementation
+    domain: backend
+    recommended_agents: [fullstack-developer]
+  - id: split_frontend_backend_feature
+    prompt: "Implement this feature across frontend and backend with clearly separate ownership."
+    expected_mode: multi_agent
+    work_mode: implementation
+    domain: backend
+    recommended_agents: [frontend-developer, backend-developer]
+  - id: no_strong_specialist_but_delegate
+    prompt: "Make this bounded change in a stack without a strong curated specialist."
+    expected_mode: single_delegate
+    work_mode: implementation
+    domain: backend
+    recommended_agents: [worker]
