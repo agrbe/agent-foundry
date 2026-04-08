@@ -1,0 +1,4 @@
+interface:
+  display_name: "Multi-Agent Router"
+  short_description: "Route tasks between solo, one specialist, or multiple agents"
+  default_prompt: "Use $multi-agent-router to decide whether this task should stay in the main Codex thread, be delegated to one strong specialist, or be split across multiple subagents. Prefer a strong specialist whenever it materially improves execution, and explain why delegation is or is not better than staying solo."
