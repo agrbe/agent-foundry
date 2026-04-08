@@ -119,7 +119,3 @@ This repository is intended to prioritize:
 - maintainability
 - compatibility across tools
 - responsible reuse of external artifacts
-
-## Maintainer
-
-Initial owner: `@agrbe`
