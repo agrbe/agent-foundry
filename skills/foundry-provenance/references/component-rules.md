@@ -57,7 +57,7 @@ Recommended agent entry shape:
 
 ```yaml
 - id: backend-developer
-  path: agents/01-core-development/backend-developer.toml
+  path: agents/01-application-roles/backend-developer.toml
   title: Backend Developer
   description: Use when a task needs scoped backend implementation or backend bug fixes after the owning path is known.
   origin: third_party
