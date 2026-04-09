@@ -5,7 +5,7 @@ policies:
   canonical_skill: skills/multi-agent-router/SKILL.md
   prompt_summary: skills/multi-agent-router/references/prompt-summary.md
   visibility: on_override_or_spawn
-  specialist_bias: prefer_specialist_when_materially_better
+  specialist_bias: require_specialist_when_requirements_match
   generic_fallback: always_fallback_generic
   parent_thread_owns:
     - requirements
@@ -19,27 +19,31 @@ policies:
     explain_why_not_more_agents: true
 
 decision_model:
+  specialist_match_criteria:
+    - the task work mode is listed in the agent route
+    - the task domain is listed in the agent route
+    - the request aligns with the route's preferred_for focus
+    - no route avoid_for item clearly applies
   modes:
     solo:
       use_when:
-        - one bounded deliverable
-        - low uncertainty
-        - low coordination risk
-        - delegation would mostly duplicate repo reading
+        - no curated specialist cleanly matches the task requirements
+        - the next local blocking step must happen before delegation can help
+        - delegation would mostly duplicate repo reading after the path is already obvious
       avoid_when:
-        - a strong specialist materially improves quality or speed
+        - a curated specialist matches the task requirements
         - multiple independent review dimensions are required
         - cross-boundary work has clearly separable ownership
         - discovery or validation can run in parallel with implementation
     single_delegate:
       use_when:
         - one primary deliverable dominates the task
-        - one strong specialist match clearly owns the path
+        - one curated specialist cleanly matches the required work mode and domain
         - the parent thread mainly needs to preserve context and synthesis
       avoid_when:
-        - specialist fit is weak
+        - no curated specialist cleanly matches the task requirements
         - the work naturally splits into independent tracks
-        - delegation would block the immediate next local step
+        - multiple specialists are required to cover distinct requirements
     multi_agent:
       use_when:
         - there are multiple independent workstreams
@@ -52,6 +56,7 @@ decision_model:
         - write ownership would overlap
   strong_specialist_pressure:
     - the task cleanly matches a curated route in `agent_routes`
+    - the required work mode and domain both match a curated specialist route
     - the request explicitly asks for review, audit, debugging, performance, or security expertise
     - the domain is high-risk or verification-heavy
   anti_patterns:
@@ -59,6 +64,8 @@ decision_model:
     - delegate the immediate blocking step that the parent must perform next
     - use multiple write-capable delegates with overlapping ownership
     - choose multi-agent execution when one specialist can own the main path
+    - stay solo when a curated specialist matches the task requirements
+    - use a generic fallback when a curated specialist route is available
   output_contract:
     visible_fields:
       - mode
@@ -78,19 +85,19 @@ built_in_roles:
     role_type: generic
     execution_type: write_capable
     use_when:
-      - delegation still helps but no curated specialist is a strong fit
+      - delegation still helps but no curated specialist matches the task requirements
       - the task is bounded and not domain-sensitive
   explorer:
     role_type: generic
     execution_type: read_only
     use_when:
-      - discovery still helps but no curated read-only specialist is a strong fit
+      - discovery still helps but no curated read-only specialist matches the task requirements
       - the fastest next step is evidence gathering
   worker:
     role_type: generic
     execution_type: write_capable
     use_when:
-      - the work should be delegated but the repo lacks a stronger implementation specialist
+      - the work should be delegated but no curated implementation specialist matches the task requirements
       - file ownership can still be bounded clearly
 
 work_modes:
@@ -108,6 +115,8 @@ domains:
   data: Database, query, analytics, and model-adjacent work.
   infrastructure: Build, deployment, containers, cloud, and operational reliability.
   docs: Documentation, prompt behavior, and developer-facing guidance.
+  product: Product framing, requirements, UX, market positioning, and delivery guidance.
+  developer_experience: Tooling, workflows, dependency management, and developer productivity.
 
 route_groups:
   orchestration:
@@ -151,6 +160,9 @@ route_groups:
     - llm-architect
     - prompt-engineer
     - python-pro
+    - graphql-architect
+    - microservices-architect
+    - websocket-engineer
   data_database:
     - database-administrator
     - database-optimizer
@@ -167,6 +179,99 @@ route_groups:
     - documentation-engineer
     - docs-researcher
     - technical-writer
+    - api-documenter
+  language_frameworks:
+    - angular-architect
+    - cpp-pro
+    - csharp-developer
+    - django-developer
+    - dotnet-core-expert
+    - dotnet-framework-4.8-expert
+    - elixir-expert
+    - erlang-expert
+    - golang-pro
+    - java-architect
+    - javascript-pro
+    - kotlin-specialist
+    - laravel-specialist
+    - php-pro
+    - powershell-5.1-expert
+    - powershell-7-expert
+    - rails-expert
+    - rust-engineer
+    - spring-boot-engineer
+    - vue-expert
+  mobile_desktop:
+    - electron-pro
+    - mobile-developer
+    - mobile-app-developer
+    - flutter-expert
+    - swift-expert
+    - game-developer
+  cloud_reliability:
+    - azure-infra-engineer
+    - cloud-architect
+    - devops-incident-responder
+    - incident-responder
+    - network-engineer
+    - sre-engineer
+    - terraform-engineer
+    - terragrunt-expert
+    - windows-infra-admin
+    - ad-security-reviewer
+    - chaos-engineer
+    - powershell-security-hardening
+    - m365-admin
+  data_ml:
+    - data-analyst
+    - data-engineer
+    - data-researcher
+    - data-scientist
+    - machine-learning-engineer
+    - ml-engineer
+    - mlops-engineer
+    - nlp-engineer
+    - quant-analyst
+  developer_experience:
+    - cli-developer
+    - dependency-manager
+    - dx-optimizer
+    - git-workflow-manager
+    - legacy-modernizer
+    - powershell-module-architect
+    - powershell-ui-architect
+    - refactoring-specialist
+    - tooling-engineer
+  specialized_domains:
+    - blockchain-developer
+    - embedded-systems
+    - fintech-engineer
+    - iot-engineer
+    - payment-integration
+    - slack-expert
+    - wordpress-master
+  business_product:
+    - business-analyst
+    - content-marketer
+    - customer-success-manager
+    - legal-advisor
+    - product-manager
+    - project-manager
+    - sales-engineer
+    - scrum-master
+    - ux-researcher
+    - seo-specialist
+    - risk-manager
+  research_analysis:
+    - competitive-analyst
+    - market-researcher
+    - research-analyst
+    - trend-analyst
+    - performance-monitor
+  meta_orchestration:
+    - agent-installer
+    - error-coordinator
+    - it-ops-orchestrator
 
 agent_routes:
   agent-organizer:
@@ -562,6 +667,790 @@ agent_routes:
     pair_with: [documentation-engineer, knowledge-synthesizer]
     fallback_priority: 80
 
+
+  graphql-architect:
+    work_modes: [discovery, review]
+    domains: [backend, docs]
+    execution_type: read_only
+    preferred_for: [graphql_schema_design, resolver_architecture, federation_review]
+    avoid_for: [non_graphql_backends]
+    pair_with: [api-designer, backend-developer]
+    fallback_priority: 80
+
+  microservices-architect:
+    work_modes: [discovery, review]
+    domains: [backend, infrastructure]
+    execution_type: read_only
+    preferred_for: [service_boundaries, interservice_contracts, distributed_design]
+    avoid_for: [small_local_fixes]
+    pair_with: [architect-reviewer, backend-developer]
+    fallback_priority: 75
+
+  websocket-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [backend, frontend]
+    execution_type: write_capable
+    preferred_for: [realtime_transport, socket_lifecycle, reconnect_contracts]
+    avoid_for: [request_response_only_systems]
+    pair_with: [backend-developer, frontend-developer]
+    fallback_priority: 90
+
+  electron-pro:
+    work_modes: [implementation, review, validation]
+    domains: [frontend, backend]
+    execution_type: write_capable
+    preferred_for: [electron_main_renderer, preload_bridges, desktop_packaging]
+    avoid_for: [browser_only_frontends]
+    pair_with: [frontend-developer, javascript-pro]
+    fallback_priority: 85
+
+  mobile-developer:
+    work_modes: [implementation, validation]
+    domains: [frontend, backend]
+    execution_type: write_capable
+    preferred_for: [mobile_lifecycle, device_integration, api_backed_mobile_flows]
+    avoid_for: [desktop_only_tasks]
+    pair_with: [frontend-developer, backend-developer]
+    fallback_priority: 90
+
+  mobile-app-developer:
+    work_modes: [implementation, validation]
+    domains: [frontend]
+    execution_type: write_capable
+    preferred_for: [screen_flows, mobile_state, release_sensitive_mobile_behavior]
+    avoid_for: [backend_only_tasks]
+    pair_with: [mobile-developer, frontend-developer]
+    fallback_priority: 85
+
+  flutter-expert:
+    work_modes: [implementation, review, validation]
+    domains: [frontend]
+    execution_type: write_capable
+    preferred_for: [flutter_widgets, dart_state_flow, cross_platform_mobile_ui]
+    avoid_for: [non_flutter_frontends]
+    pair_with: [mobile-developer, frontend-developer]
+    fallback_priority: 90
+
+  swift-expert:
+    work_modes: [implementation, review, validation]
+    domains: [frontend]
+    execution_type: write_capable
+    preferred_for: [ios_macos_code, apple_platform_apis, native_async_flows]
+    avoid_for: [non_apple_stacks]
+    pair_with: [mobile-developer, mobile-app-developer]
+    fallback_priority: 90
+
+  game-developer:
+    work_modes: [implementation, review, validation]
+    domains: [frontend, backend]
+    execution_type: write_capable
+    preferred_for: [gameplay_systems, rendering_loops, asset_state_behavior]
+    avoid_for: [non_game_systems]
+    pair_with: [frontend-developer, performance-engineer]
+    fallback_priority: 75
+
+  angular-architect:
+    work_modes: [implementation, review, validation]
+    domains: [frontend]
+    execution_type: write_capable
+    preferred_for: [angular_component_architecture, dependency_injection, routing_signals]
+    avoid_for: [non_angular_frontends]
+    pair_with: [frontend-developer, typescript-pro]
+    fallback_priority: 90
+
+  cpp-pro:
+    work_modes: [implementation, review, validation]
+    domains: [backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [performance_sensitive_code, memory_ownership, systems_integration]
+    avoid_for: [managed_runtime_only_work]
+    pair_with: [performance-engineer, embedded-systems]
+    fallback_priority: 80
+
+  csharp-developer:
+    work_modes: [implementation, review, validation]
+    domains: [backend]
+    execution_type: write_capable
+    preferred_for: [csharp_services, async_flows, dotnet_application_logic]
+    avoid_for: [non_dotnet_stacks]
+    pair_with: [dotnet-core-expert, backend-developer]
+    fallback_priority: 85
+
+  django-developer:
+    work_modes: [implementation, review, validation]
+    domains: [backend, docs]
+    execution_type: write_capable
+    preferred_for: [django_models_views_forms, orm_behavior, admin_middleware]
+    avoid_for: [non_python_web_stacks]
+    pair_with: [python-pro, backend-developer]
+    fallback_priority: 90
+
+  dotnet-core-expert:
+    work_modes: [implementation, review, validation]
+    domains: [backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [aspnet_core, hosting_middleware, modern_dotnet_runtime]
+    avoid_for: [non_dotnet_stacks]
+    pair_with: [csharp-developer, backend-developer]
+    fallback_priority: 90
+
+  dotnet-framework-4.8-expert:
+    work_modes: [implementation, review, validation]
+    domains: [backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [legacy_dotnet_apps, windows_bound_integrations, framework_compatibility]
+    avoid_for: [cross_platform_modernization_only]
+    pair_with: [csharp-developer, legacy-modernizer]
+    fallback_priority: 85
+
+  elixir-expert:
+    work_modes: [implementation, review, validation]
+    domains: [backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [otp_processes, supervision_trees, phoenix_behavior]
+    avoid_for: [non_beam_stacks]
+    pair_with: [erlang-expert, backend-developer]
+    fallback_priority: 85
+
+  erlang-expert:
+    work_modes: [implementation, review, validation]
+    domains: [backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [beam_runtime, distributed_processes, release_upgrades]
+    avoid_for: [non_beam_stacks]
+    pair_with: [elixir-expert, performance-engineer]
+    fallback_priority: 80
+
+  golang-pro:
+    work_modes: [implementation, review, validation]
+    domains: [backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [go_services, concurrency, go_tooling]
+    avoid_for: [non_go_stacks]
+    pair_with: [backend-developer, performance-engineer]
+    fallback_priority: 85
+
+  java-architect:
+    work_modes: [discovery, review]
+    domains: [backend]
+    execution_type: write_capable
+    preferred_for: [java_service_architecture, jvm_behavior, large_codebase_structure]
+    avoid_for: [small_local_syntax_fixes]
+    pair_with: [spring-boot-engineer, architect-reviewer]
+    fallback_priority: 80
+
+  javascript-pro:
+    work_modes: [implementation, review, validation]
+    domains: [frontend, backend]
+    execution_type: write_capable
+    preferred_for: [js_runtime_behavior, node_browser_logic, non_typescript_paths]
+    avoid_for: [typescript_led_refactors]
+    pair_with: [frontend-developer, backend-developer]
+    fallback_priority: 80
+
+  kotlin-specialist:
+    work_modes: [implementation, review, validation]
+    domains: [backend, frontend]
+    execution_type: write_capable
+    preferred_for: [kotlin_jvm, coroutines, android_logic]
+    avoid_for: [non_kotlin_stacks]
+    pair_with: [backend-developer, mobile-developer]
+    fallback_priority: 85
+
+  laravel-specialist:
+    work_modes: [implementation, review, validation]
+    domains: [backend, docs]
+    execution_type: write_capable
+    preferred_for: [laravel_routing, eloquent_models, queues_validation]
+    avoid_for: [non_php_frameworks]
+    pair_with: [php-pro, backend-developer]
+    fallback_priority: 90
+
+  php-pro:
+    work_modes: [implementation, review, validation]
+    domains: [backend]
+    execution_type: write_capable
+    preferred_for: [php_application_logic, runtime_debugging, framework_integration]
+    avoid_for: [non_php_stacks]
+    pair_with: [laravel-specialist, backend-developer]
+    fallback_priority: 80
+
+  powershell-5.1-expert:
+    work_modes: [implementation, review, validation]
+    domains: [infrastructure, backend]
+    execution_type: write_capable
+    preferred_for: [legacy_powershell_automation, full_framework_interop, windows_admin_scripts]
+    avoid_for: [non_windows_stacks]
+    pair_with: [windows-infra-admin, powershell-module-architect]
+    fallback_priority: 75
+
+  powershell-7-expert:
+    work_modes: [implementation, review, validation]
+    domains: [infrastructure, backend]
+    execution_type: write_capable
+    preferred_for: [cross_platform_powershell, automation_scripts, dotnet_tooling]
+    avoid_for: [legacy_windows_only_powershell]
+    pair_with: [powershell-module-architect, tooling-engineer]
+    fallback_priority: 80
+
+  rails-expert:
+    work_modes: [implementation, review, validation]
+    domains: [backend, docs]
+    execution_type: write_capable
+    preferred_for: [rails_models_controllers_jobs, callbacks, convention_driven_changes]
+    avoid_for: [non_ruby_stacks]
+    pair_with: [backend-developer, test-automator]
+    fallback_priority: 90
+
+  rust-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [ownership_sensitive_code, async_runtime, high_performance_paths]
+    avoid_for: [non_rust_stacks]
+    pair_with: [backend-developer, performance-engineer]
+    fallback_priority: 85
+
+  spring-boot-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [backend]
+    execution_type: write_capable
+    preferred_for: [spring_boot_services, configuration, data_access]
+    avoid_for: [non_java_service_stacks]
+    pair_with: [java-architect, backend-developer]
+    fallback_priority: 90
+
+  vue-expert:
+    work_modes: [implementation, review, validation]
+    domains: [frontend]
+    execution_type: write_capable
+    preferred_for: [vue_components, composition_api, vue_routing_state]
+    avoid_for: [non_vue_frontends]
+    pair_with: [frontend-developer, typescript-pro]
+    fallback_priority: 90
+
+  azure-infra-engineer:
+    work_modes: [discovery, review]
+    domains: [infrastructure, security]
+    execution_type: read_only
+    preferred_for: [azure_resources, networking_identity, azure_automation]
+    avoid_for: [non_azure_platforms]
+    pair_with: [cloud-architect, devops-engineer]
+    fallback_priority: 85
+
+  cloud-architect:
+    work_modes: [discovery, review]
+    domains: [infrastructure, backend]
+    execution_type: read_only
+    preferred_for: [cloud_topology, reliability_design, multiservice_architecture]
+    avoid_for: [small_local_edits]
+    pair_with: [platform-engineer, architect-reviewer]
+    fallback_priority: 75
+
+  devops-incident-responder:
+    work_modes: [discovery, review, validation]
+    domains: [infrastructure]
+    execution_type: read_only
+    preferred_for: [ci_deploy_failures, operational_triage, delivery_incidents]
+    avoid_for: [feature_implementation]
+    pair_with: [devops-engineer, deployment-engineer]
+    fallback_priority: 85
+
+  incident-responder:
+    work_modes: [discovery, review, synthesis]
+    domains: [infrastructure, backend]
+    execution_type: read_only
+    preferred_for: [production_triage, containment_planning, root_cause_evidence]
+    avoid_for: [direct_implementation]
+    pair_with: [debugger, error-detective]
+    fallback_priority: 85
+
+  network-engineer:
+    work_modes: [discovery, review, validation]
+    domains: [infrastructure]
+    execution_type: read_only
+    preferred_for: [network_path_analysis, connectivity_debugging, load_balancer_edges]
+    avoid_for: [application_only_tasks]
+    pair_with: [devops-engineer, kubernetes-specialist]
+    fallback_priority: 80
+
+  sre-engineer:
+    work_modes: [review, validation]
+    domains: [infrastructure]
+    execution_type: read_only
+    preferred_for: [slos_alerting, operational_safety, service_resilience]
+    avoid_for: [pure_feature_work]
+    pair_with: [devops-engineer, chaos-engineer]
+    fallback_priority: 85
+
+  terraform-engineer:
+    work_modes: [discovery, review, validation]
+    domains: [infrastructure]
+    execution_type: read_only
+    preferred_for: [terraform_modules, plan_review, state_aware_iac_changes]
+    avoid_for: [non_iac_work]
+    pair_with: [terragrunt-expert, devops-engineer]
+    fallback_priority: 85
+
+  terragrunt-expert:
+    work_modes: [discovery, review, validation]
+    domains: [infrastructure]
+    execution_type: read_only
+    preferred_for: [terragrunt_layering, module_orchestration, dependency_wiring]
+    avoid_for: [plain_terraform_only]
+    pair_with: [terraform-engineer, devops-engineer]
+    fallback_priority: 80
+
+  windows-infra-admin:
+    work_modes: [discovery, review]
+    domains: [infrastructure, security]
+    execution_type: read_only
+    preferred_for: [active_directory_admin, dns_dhcp_gpo, windows_automation]
+    avoid_for: [non_windows_infra]
+    pair_with: [ad-security-reviewer, powershell-5.1-expert]
+    fallback_priority: 80
+
+  ad-security-reviewer:
+    work_modes: [review]
+    domains: [security, infrastructure]
+    execution_type: read_only
+    preferred_for: [active_directory_boundaries, delegation_risk, gpo_exposure]
+    avoid_for: [non_identity_systems]
+    pair_with: [security-auditor, windows-infra-admin]
+    fallback_priority: 90
+
+  chaos-engineer:
+    work_modes: [review, validation]
+    domains: [infrastructure, backend]
+    execution_type: read_only
+    preferred_for: [fault_injection_plans, resilience_analysis, recovery_behavior]
+    avoid_for: [steady_state_feature_work]
+    pair_with: [sre-engineer, incident-responder]
+    fallback_priority: 75
+
+  powershell-security-hardening:
+    work_modes: [review]
+    domains: [security, infrastructure]
+    execution_type: read_only
+    preferred_for: [script_safety, execution_controls, admin_hardening]
+    avoid_for: [non_powershell_stacks]
+    pair_with: [security-engineer, powershell-7-expert]
+    fallback_priority: 85
+
+  m365-admin:
+    work_modes: [discovery, review]
+    domains: [infrastructure, security, docs]
+    execution_type: read_only
+    preferred_for: [m365_tenant_admin, exchange_teams_sharepoint, identity_automation]
+    avoid_for: [non_microsoft_enterprise_systems]
+    pair_with: [windows-infra-admin, it-ops-orchestrator]
+    fallback_priority: 75
+
+  data-analyst:
+    work_modes: [discovery, synthesis]
+    domains: [data, product]
+    execution_type: read_only
+    preferred_for: [metric_breakdowns, trend_explanations, analytics_decision_support]
+    avoid_for: [pipeline_implementation]
+    pair_with: [data-researcher, product-manager]
+    fallback_priority: 70
+
+  data-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [data, backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [etl_ingestion, warehouse_transformations, data_pipeline_debugging]
+    avoid_for: [pure_business_reporting]
+    pair_with: [database-administrator, backend-developer]
+    fallback_priority: 85
+
+  data-researcher:
+    work_modes: [discovery, synthesis]
+    domains: [data, product]
+    execution_type: read_only
+    preferred_for: [dataset_gathering, metrics_sources, quantitative_evidence]
+    avoid_for: [direct_pipeline_implementation]
+    pair_with: [data-analyst, docs-researcher]
+    fallback_priority: 70
+
+  data-scientist:
+    work_modes: [discovery, review, synthesis]
+    domains: [data]
+    execution_type: read_only
+    preferred_for: [statistical_reasoning, experiment_interpretation, feature_analysis]
+    avoid_for: [production_pipeline_plumbing]
+    pair_with: [data-analyst, quant-analyst]
+    fallback_priority: 75
+
+  machine-learning-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [data, backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [training_pipelines, model_serving, inference_integration]
+    avoid_for: [non_ml_systems]
+    pair_with: [ai-engineer, mlops-engineer]
+    fallback_priority: 85
+
+  ml-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [data, backend]
+    execution_type: write_capable
+    preferred_for: [practical_ml_impl, feature_engineering, model_backed_logic]
+    avoid_for: [research_only_ml]
+    pair_with: [ai-engineer, machine-learning-engineer]
+    fallback_priority: 80
+
+  mlops-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [data, infrastructure]
+    execution_type: write_capable
+    preferred_for: [model_deployment, registries, ml_monitoring]
+    avoid_for: [model_free_backends]
+    pair_with: [machine-learning-engineer, devops-engineer]
+    fallback_priority: 85
+
+  nlp-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [data, backend]
+    execution_type: write_capable
+    preferred_for: [text_processing, embeddings, ranking]
+    avoid_for: [non_text_or_non_ml_tasks]
+    pair_with: [ai-engineer, prompt-engineer]
+    fallback_priority: 80
+
+  quant-analyst:
+    work_modes: [discovery, review, synthesis]
+    domains: [data, product]
+    execution_type: read_only
+    preferred_for: [simulations, strategy_analysis, numeric_decision_logic]
+    avoid_for: [crud_application_work]
+    pair_with: [data-scientist, risk-manager]
+    fallback_priority: 75
+
+  cli-developer:
+    work_modes: [implementation, review, validation]
+    domains: [developer_experience, docs]
+    execution_type: write_capable
+    preferred_for: [cli_features, argument_parsing, shell_workflow_ux]
+    avoid_for: [gui_only_work]
+    pair_with: [tooling-engineer, documentation-engineer]
+    fallback_priority: 80
+
+  dependency-manager:
+    work_modes: [implementation, review, validation]
+    domains: [developer_experience, security, infrastructure]
+    execution_type: write_capable
+    preferred_for: [package_upgrades, dependency_graphs, version_policy_cleanup]
+    avoid_for: [feature_work_without_dependency_change]
+    pair_with: [build-engineer, security-auditor]
+    fallback_priority: 85
+
+  dx-optimizer:
+    work_modes: [discovery, review]
+    domains: [developer_experience, docs]
+    execution_type: read_only
+    preferred_for: [setup_time, feedback_loops, workflow_friction]
+    avoid_for: [product_feature_scoping]
+    pair_with: [tooling-engineer, documentation-engineer]
+    fallback_priority: 75
+
+  git-workflow-manager:
+    work_modes: [discovery, review, synthesis]
+    domains: [developer_experience, docs]
+    execution_type: read_only
+    preferred_for: [branching_strategy, merge_flow, release_branching]
+    avoid_for: [direct_feature_implementation]
+    pair_with: [project-manager, deployment-engineer]
+    fallback_priority: 70
+
+  legacy-modernizer:
+    work_modes: [discovery, review]
+    domains: [developer_experience, backend, infrastructure]
+    execution_type: read_only
+    preferred_for: [modernization_paths, compatibility_preserving_migrations, staged_refactors]
+    avoid_for: [greenfield_feature_work]
+    pair_with: [architect-reviewer, refactoring-specialist]
+    fallback_priority: 75
+
+  powershell-module-architect:
+    work_modes: [implementation, review]
+    domains: [developer_experience, infrastructure, docs]
+    execution_type: write_capable
+    preferred_for: [powershell_module_structure, command_design, packaging]
+    avoid_for: [non_powershell_codebases]
+    pair_with: [powershell-7-expert, documentation-engineer]
+    fallback_priority: 75
+
+  powershell-ui-architect:
+    work_modes: [implementation, review, validation]
+    domains: [frontend, developer_experience]
+    execution_type: write_capable
+    preferred_for: [terminal_forms_wpf_ui, admin_interactive_tooling]
+    avoid_for: [web_only_frontends]
+    pair_with: [ui-designer, powershell-7-expert]
+    fallback_priority: 70
+
+  refactoring-specialist:
+    work_modes: [implementation, review, validation]
+    domains: [developer_experience, backend, frontend]
+    execution_type: write_capable
+    preferred_for: [behavior_preserving_structure, modularity, readability]
+    avoid_for: [net_new_feature_design]
+    pair_with: [code-reviewer, test-automator]
+    fallback_priority: 80
+
+  tooling-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [developer_experience, infrastructure, backend]
+    execution_type: write_capable
+    preferred_for: [internal_tooling, automation_glue, workflow_utilities]
+    avoid_for: [end_user_product_features]
+    pair_with: [build-engineer, documentation-engineer]
+    fallback_priority: 85
+
+  api-documenter:
+    work_modes: [implementation, review, synthesis]
+    domains: [docs, backend]
+    execution_type: write_capable
+    preferred_for: [consumer_facing_api_docs, schema_examples, implementation_grounded_reference]
+    avoid_for: [undocumented_apis_without_source_access]
+    pair_with: [api-designer, technical-writer]
+    fallback_priority: 85
+
+  blockchain-developer:
+    work_modes: [implementation, review, validation]
+    domains: [backend, security]
+    execution_type: write_capable
+    preferred_for: [wallet_flows, transaction_lifecycle, smart_contract_integration]
+    avoid_for: [non_blockchain_systems]
+    pair_with: [backend-developer, security-auditor]
+    fallback_priority: 80
+
+  embedded-systems:
+    work_modes: [implementation, review, validation]
+    domains: [backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [firmware_boundaries, timing_constraints, hardware_adjacent_integration]
+    avoid_for: [pure_web_app_changes]
+    pair_with: [cpp-pro, iot-engineer]
+    fallback_priority: 80
+
+  fintech-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [backend, data, security]
+    execution_type: write_capable
+    preferred_for: [ledgers, reconciliation, settlement_flows]
+    avoid_for: [non_financial_systems]
+    pair_with: [payment-integration, risk-manager]
+    fallback_priority: 85
+
+  iot-engineer:
+    work_modes: [implementation, review, validation]
+    domains: [backend, infrastructure]
+    execution_type: write_capable
+    preferred_for: [device_telemetry, edge_communication, cloud_device_coordination]
+    avoid_for: [pure_web_only_systems]
+    pair_with: [embedded-systems, devops-engineer]
+    fallback_priority: 80
+
+  payment-integration:
+    work_modes: [implementation, review, validation]
+    domains: [backend, security]
+    execution_type: write_capable
+    preferred_for: [checkout_flows, payment_webhooks, idempotency]
+    avoid_for: [non_payment_systems]
+    pair_with: [backend-developer, security-auditor]
+    fallback_priority: 90
+
+  slack-expert:
+    work_modes: [implementation, review, validation]
+    domains: [backend, docs]
+    execution_type: write_capable
+    preferred_for: [slack_bots, events, interactivity]
+    avoid_for: [non_slack_integrations]
+    pair_with: [backend-developer, documentation-engineer]
+    fallback_priority: 80
+
+  wordpress-master:
+    work_modes: [implementation, review, validation]
+    domains: [frontend, backend, docs]
+    execution_type: write_capable
+    preferred_for: [wordpress_themes, plugin_debugging, content_architecture]
+    avoid_for: [non_wordpress_stacks]
+    pair_with: [frontend-developer, documentation-engineer]
+    fallback_priority: 80
+
+  business-analyst:
+    work_modes: [discovery, synthesis]
+    domains: [product, docs]
+    execution_type: read_only
+    preferred_for: [requirements_normalization, scope_clarification, acceptance_criteria]
+    avoid_for: [direct_code_changes]
+    pair_with: [product-manager, project-manager]
+    fallback_priority: 80
+
+  content-marketer:
+    work_modes: [discovery, review, synthesis]
+    domains: [product, docs]
+    execution_type: read_only
+    preferred_for: [technical_marketing_copy, capability_messaging, launch_content]
+    avoid_for: [source_code_debugging]
+    pair_with: [sales-engineer, technical-writer]
+    fallback_priority: 70
+
+  customer-success-manager:
+    work_modes: [discovery, synthesis]
+    domains: [product, docs]
+    execution_type: read_only
+    preferred_for: [support_pattern_synthesis, adoption_risks, customer_guidance]
+    avoid_for: [direct_feature_implementation]
+    pair_with: [product-manager, technical-writer]
+    fallback_priority: 70
+
+  legal-advisor:
+    work_modes: [review, synthesis]
+    domains: [product, security, docs]
+    execution_type: read_only
+    preferred_for: [external_commitments, terms_data_handling_risk, policy_language]
+    avoid_for: [code_only_tasks]
+    pair_with: [compliance-auditor, technical-writer]
+    fallback_priority: 75
+
+  product-manager:
+    work_modes: [discovery, synthesis]
+    domains: [product]
+    execution_type: read_only
+    preferred_for: [product_framing, prioritization, scope_tradeoffs]
+    avoid_for: [direct_implementation]
+    pair_with: [business-analyst, project-manager]
+    fallback_priority: 85
+
+  project-manager:
+    work_modes: [discovery, synthesis]
+    domains: [product, orchestration]
+    execution_type: read_only
+    preferred_for: [dependency_mapping, milestones, delivery_risk_coordination]
+    avoid_for: [direct_code_changes]
+    pair_with: [multi-agent-coordinator, workflow-orchestrator]
+    fallback_priority: 80
+
+  sales-engineer:
+    work_modes: [review, synthesis]
+    domains: [product, docs]
+    execution_type: read_only
+    preferred_for: [solution_positioning, customer_tradeoffs, technical_q_and_a]
+    avoid_for: [deep_internal_refactors]
+    pair_with: [content-marketer, technical-writer]
+    fallback_priority: 75
+
+  scrum-master:
+    work_modes: [discovery, synthesis]
+    domains: [product, orchestration]
+    execution_type: read_only
+    preferred_for: [process_facilitation, iteration_planning, workflow_friction]
+    avoid_for: [implementation]
+    pair_with: [project-manager, agent-organizer]
+    fallback_priority: 70
+
+  ux-researcher:
+    work_modes: [discovery, review, synthesis]
+    domains: [product, frontend]
+    execution_type: read_only
+    preferred_for: [ui_feedback_synthesis, user_flow_insights, usability_findings]
+    avoid_for: [direct_implementation]
+    pair_with: [ui-designer, product-manager]
+    fallback_priority: 75
+
+  seo-specialist:
+    work_modes: [review, validation]
+    domains: [product, frontend, docs]
+    execution_type: read_only
+    preferred_for: [crawlability, metadata, rendering_discoverability]
+    avoid_for: [backend_only_tasks]
+    pair_with: [technical-writer, frontend-developer]
+    fallback_priority: 75
+
+  risk-manager:
+    work_modes: [review, synthesis]
+    domains: [product, security, infrastructure]
+    execution_type: read_only
+    preferred_for: [risk_registers, mitigation_tradeoffs, operational_risk]
+    avoid_for: [direct_implementation]
+    pair_with: [security-auditor, project-manager]
+    fallback_priority: 75
+
+  competitive-analyst:
+    work_modes: [discovery, synthesis]
+    domains: [product, docs]
+    execution_type: read_only
+    preferred_for: [grounded_comparisons, option_tradeoffs, build_vs_buy]
+    avoid_for: [direct_implementation]
+    pair_with: [market-researcher, research-analyst]
+    fallback_priority: 75
+
+  market-researcher:
+    work_modes: [discovery, synthesis]
+    domains: [product, docs]
+    execution_type: read_only
+    preferred_for: [market_landscape, category_positioning, demand_signals]
+    avoid_for: [source_code_tasks]
+    pair_with: [competitive-analyst, trend-analyst]
+    fallback_priority: 70
+
+  research-analyst:
+    work_modes: [discovery, synthesis]
+    domains: [product, backend, frontend, data, infrastructure, docs]
+    execution_type: read_only
+    preferred_for: [structured_investigation, approach_comparison, design_question_research]
+    avoid_for: [direct_implementation]
+    pair_with: [docs-researcher, knowledge-synthesizer]
+    fallback_priority: 80
+
+  trend-analyst:
+    work_modes: [discovery, synthesis]
+    domains: [product, docs, data]
+    execution_type: read_only
+    preferred_for: [technology_trends, adoption_patterns, emerging_directions]
+    avoid_for: [repo_local_bugfixes]
+    pair_with: [market-researcher, research-analyst]
+    fallback_priority: 70
+
+  performance-monitor:
+    work_modes: [discovery, synthesis, validation]
+    domains: [infrastructure, backend, data]
+    execution_type: read_only
+    preferred_for: [signal_interpretation, runtime_metrics, build_performance_baselines]
+    avoid_for: [direct_code_changes]
+    pair_with: [performance-engineer, sre-engineer]
+    fallback_priority: 75
+
+  agent-installer:
+    work_modes: [discovery, synthesis]
+    domains: [orchestration, developer_experience, docs]
+    execution_type: read_only
+    preferred_for: [agent_selection, agent_file_setup, codex_agent_installation]
+    avoid_for: [general_code_implementation]
+    pair_with: [agent-organizer, documentation-engineer]
+    fallback_priority: 70
+
+  error-coordinator:
+    work_modes: [discovery, synthesis]
+    domains: [orchestration, backend, infrastructure]
+    execution_type: read_only
+    preferred_for: [multi_error_grouping, priority_ordering, debugger_assignment]
+    avoid_for: [single_bug_direct_fixes]
+    pair_with: [debugger, error-detective]
+    fallback_priority: 85
+
+  it-ops-orchestrator:
+    work_modes: [discovery, synthesis]
+    domains: [orchestration, infrastructure, security]
+    execution_type: read_only
+    preferred_for: [cross_team_it_plans, identity_endpoint_coordination, ops_workflows]
+    avoid_for: [single_tool_local_edits]
+    pair_with: [incident-responder, windows-infra-admin]
+    fallback_priority: 80
+
 decision_examples:
   - id: explain_one_function
     prompt: "What does this function do?"
@@ -606,7 +1495,7 @@ decision_examples:
     domain: backend
     recommended_agents: [frontend-developer, backend-developer]
   - id: no_strong_specialist_but_delegate
-    prompt: "Make this bounded change in a stack without a strong curated specialist."
+    prompt: "Make this bounded change in a stack without a matching curated specialist."
     expected_mode: single_delegate
     work_mode: implementation
     domain: backend

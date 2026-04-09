@@ -7,41 +7,43 @@ Use this file when the routing choice is ambiguous.
 Pick the smallest execution mode that preserves quality:
 
 - `solo`
-  Use when the parent thread can make progress directly and delegation would mainly duplicate repo reading.
+  Use only when no curated specialist cleanly fits or one narrow local-first step must happen before delegation can help.
 - `single_delegate`
   Use when one strong specialist cleanly owns the main task and the parent mostly needs to preserve context, decisions, and final synthesis.
 - `multi_agent`
   Use only when workstreams are genuinely independent, review dimensions are distinct, or discovery and validation can run in parallel.
 
-## Specialist Bias
+## Specialist Default
 
-Prefer a strong specialist whenever that specialist materially improves:
+If a curated specialist matches the task requirements, use that specialist by default.
 
-- execution speed
-- evidence quality
-- review quality
-- framework or domain correctness
-- risk reduction in high-stakes areas
+A clean specialist match means most of these are true:
 
-Do not use a specialist just because one exists. The specialist must improve the outcome relative to staying local.
+- the task work mode is listed for that route
+- the task domain is listed for that route
+- the request aligns with the route's `preferred_for` focus
+- none of the route's `avoid_for` constraints clearly apply
+
+Only stay local when no curated specialist fits or a narrow local-first exception applies. Generic fallbacks exist for cases where delegation still helps but the catalog does not contain a matching specialist.
 
 ## When To Stay Solo
 
 Stay `solo` when most of these are true:
 
-- the task has one bounded deliverable
-- the next step is obvious
+- no curated specialist cleanly fits
+- the next local step is unavoidable before delegation can help
 - the code path is already known or cheap to inspect
 - the work is tightly coupled
 - the parent thread would need to reread and reintegrate nearly all delegated context anyway
 
-If a strong specialist still exists, explain why subagents are not better for this case.
+If a matching specialist still exists, explain exactly why delegation is not possible or not useful yet.
 
 ## When To Use One Specialist
 
 Prefer `single_delegate` when:
 
 - one specialist can own the primary path
+- that specialist matches the task requirements
 - the task benefits from domain depth
 - the main thread’s highest value is preserving context and making decisions
 - adding more agents would only create serial handoffs
@@ -61,13 +63,13 @@ Avoid multi-agent work when the extra agents would only reread the same context 
 
 ## Built-In Fallback Rule
 
-If no curated specialist is a strong fit:
+If no curated specialist matches the task requirements:
 
 - use `explorer` for read-only discovery
 - use `default` for bounded delegated work with no strong domain dependence
 - use `worker` for bounded write work when delegation still helps and ownership can be kept clean
 
-Fallback to generic roles because the absence of a perfect specialist should not force weak delegation or a bad routing choice.
+Fallback to generic roles only because the catalog lacks a matching specialist, not because staying local feels simpler.
 
 ## Parent Thread Contract
 

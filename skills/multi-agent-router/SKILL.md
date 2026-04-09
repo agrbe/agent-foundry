@@ -1,13 +1,13 @@
 ---
 name: multi-agent-router
-description: Decide whether a user task should stay in the main Codex thread, be delegated to one specialist, or be split across multiple subagents. Use when Codex needs to classify work before substantive execution, choose between solo and delegated execution, prefer a strong specialist whenever it materially improves the outcome, or keep the parent thread focused on requirements, decisions, and final synthesis while subagents handle bounded work.
+description: Decide whether a user task should stay in the main Codex thread, be delegated to one specialist, or be split across multiple subagents. Use when Codex needs to classify work before substantive execution, choose between solo and delegated execution, route to a matching curated specialist whenever one fits the task requirements, or keep the parent thread focused on requirements, decisions, and final synthesis while subagents handle bounded work.
 ---
 
 # Multi-Agent Router
 
 ## Overview
 
-Route work before doing substantive execution. This skill is the canonical control surface for task routing in this repository. Use it to decide whether the task should run as `solo`, `single_delegate`, or `multi_agent`, then choose the narrowest strong specialist that improves execution without fragmenting the main thread.
+Route work before doing substantive execution. This skill is the canonical control surface for task routing in this repository. Use it to decide whether the task should run as `solo`, `single_delegate`, or `multi_agent`, then choose the narrowest strong specialist that cleanly matches the task requirements. If a curated specialist fits, delegation is the default rather than an optional optimization.
 
 Keep the parent thread responsible for:
 - requirements
@@ -33,17 +33,18 @@ Treat any prompt summary or prose-only document as derivative guidance, not the 
    - coordination risk
 
 3. Choose an execution mode.
-   - `solo`: keep the work in the main thread when delegation would mostly duplicate context gathering.
-   - `single_delegate`: prefer one strong specialist when one agent cleanly owns the task.
+   - `solo`: keep the work in the main thread only when no curated specialist cleanly fits or a narrow local-first exception applies.
+   - `single_delegate`: prefer one strong specialist when one agent cleanly owns the task and matches the task requirements.
    - `multi_agent`: use multiple specialists only when there are independent review dimensions, separable ownership, or parallel discovery and validation work.
 
 4. Prefer a strong specialist over a generic role.
    Read the relevant category or `agent_routes` entry in `router.yaml`.
-   If a curated specialist materially improves execution, use it.
+   If a curated specialist matches the task requirements, use it.
+   Do not stay local or fall back to a generic role just because the parent thread could also perform the work.
    If no strong specialist match exists but delegation still helps, fall back to `default`, `explorer`, or `worker` according to the built-in fallback rules.
 
 5. Keep the critical path local.
-   Do not delegate the immediate blocking step if the parent thread needs that answer before it can continue. Delegate bounded sidecar work and non-overlapping specialist work instead.
+   Do not delegate the immediate blocking step if the parent thread needs that answer before it can continue. Resolve that narrow blocking step locally, then hand off to the matching specialist as soon as delegation becomes useful. Do not use critical-path pressure as a blanket reason to avoid an otherwise clear specialist route.
 
 6. Set explicit delegate boundaries.
    Every delegated thread must have:
@@ -54,7 +55,7 @@ Treat any prompt summary or prose-only document as derivative guidance, not the 
 
 7. Explain the routing decision when required.
    - If you delegate, state why delegation is better than staying solo.
-   - If you stay `solo` despite strong specialist pressure, state why subagents are not better for this task.
+   - If you stay `solo` despite a matching specialist, state exactly why delegation is not possible or not useful yet.
    - Do not surface routine routing commentary unless `router.yaml` says the decision should be visible.
 
 8. Synthesize back into one parent-thread decision.
@@ -63,11 +64,12 @@ Treat any prompt summary or prose-only document as derivative guidance, not the 
 ## Decision Rules
 
 - Prefer `single_delegate` over `multi_agent` when one specialist owns the main path cleanly.
+- Prefer any matching curated specialist over `solo`, `default`, `explorer`, or `worker`.
 - Prefer `multi_agent` only when workstreams are genuinely independent or parallel review adds clear value.
 - Prefer read-only discovery specialists before write-capable delegates when the path is still uncertain.
 - Do not treat file count alone as a delegation trigger.
 - Do not choose multiple write-capable delegates unless ownership boundaries are strict and non-overlapping.
-- Do not use a weak specialist match just to avoid staying local. If delegation still helps, use a built-in fallback role.
+- Do not use a weak specialist match just to avoid staying local. If no curated specialist fits but delegation still helps, use a built-in fallback role.
 
 ## Bundled Resources
 
