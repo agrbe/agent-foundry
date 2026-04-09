@@ -12,7 +12,7 @@ repo:
   homepage: ""
   repository_url: ""
   created_at: "2026-04-03"
-  updated_at: "2026-04-08"
+  updated_at: "2026-04-09"
 
 policies:
   third_party_licenses_allowed:
@@ -2199,6 +2199,24 @@ catalog:
         - codex
         - subagent
         - research-analysis
+
+  mcps:
+    - id: modelcontextprotocol-inspector
+      path: mcps/modelcontextprotocol-inspector
+      title: Model Context Protocol Inspector
+      description: Minimal repository entry for installing and using the upstream MCP Inspector npm package.
+      origin: adapted
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: modelcontextprotocol/inspector
+      source_path: .
+      modified_from_source: true
+      status: draft
+      tags:
+        - mcp
+        - inspector
+        - npm
+        - developer-tool
 
   skills:
     - id: intake-skill

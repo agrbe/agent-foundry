@@ -1,0 +1,17 @@
+id: modelcontextprotocol-inspector
+kind: mcp
+title: Model Context Protocol Inspector
+description: Minimal repository entry for installing and using the upstream MCP Inspector npm package.
+origin: adapted
+owner: "@agrbe"
+license: Apache-2.0
+source_repo: modelcontextprotocol/inspector
+source_path: .
+modified_from_source: true
+status: draft
+source_license: Apache-2.0
+tags:
+  - mcp
+  - inspector
+  - npm
+  - developer-tool

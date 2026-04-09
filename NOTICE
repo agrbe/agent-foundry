@@ -13,6 +13,7 @@ include:
 
 - openai/skills (Apache-2.0)
 - VoltAgent/awesome-codex-subagents (MIT)
+- modelcontextprotocol/inspector (Apache-2.0)
 
 Additional attribution, provenance, and third-party notice details are
 maintained in:

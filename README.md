@@ -5,7 +5,7 @@
 This repository is intended to become a central, curated source of reusable AI building blocks, including:
 - agent definitions
 - skills and workflows
-- MCP integration templates
+- MCP artifacts, launchers, and templates
 - governance and provenance metadata
 - licensing and attribution records
 
@@ -20,6 +20,7 @@ At this stage, it contains:
 - supporting documentation
 - initial native skill definitions
 - Codex subagents under `agents/`
+- initial MCP artifact definitions under `mcps/`
 
 ## Goals
 
@@ -43,6 +44,7 @@ agent-foundry/
 ├─ registry.yaml
 ├─ agents/
 ├─ docs/
+├─ mcps/
 ├─ skills/
 └─ third_party/
    └─ THIRD_PARTY_NOTICES.md
@@ -51,7 +53,6 @@ agent-foundry/
 Planned future areas may include:
 
 ```text
-mcp/
 catalog/
 templates/
 hooks/
@@ -108,7 +109,7 @@ Planned next steps include:
 2. establish import and adaptation rules
 3. curate imported agents and add the first native or adapted agents
 4. expand the initial skill definitions
-5. add MCP integration templates
+5. expand MCP integration templates and installation helpers
 6. introduce validation and maintenance workflows
 
 ## Contribution Philosophy

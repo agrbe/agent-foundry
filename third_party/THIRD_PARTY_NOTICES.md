@@ -21,6 +21,12 @@ Unless otherwise stated:
 - Intended use in this repository: imported Codex-native subagent definitions under `agents/`
 - Attribution requirement: preserve the original copyright and license notice in copies or substantial portions
 
+### 3. modelcontextprotocol/inspector
+- Upstream repository: `https://github.com/modelcontextprotocol/inspector`
+- Upstream license: Apache-2.0
+- Intended use in this repository: MCP installation metadata and helper scripts under `mcps/`
+- Attribution requirement: preserve the original copyright and license notice in copies or substantial portions
+
 ## Distribution Policy
 
 When material is copied or adapted from a third-party source:
