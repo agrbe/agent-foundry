@@ -11,5 +11,7 @@ Recommended baseline:
 - one small shell script when setup or installation should be standardized
 
 Current entries:
+- `atlassian-rovo-mcp`: Codex installer and usage notes for Atlassian's hosted
+  Rovo MCP server with Jira-focused setup guidance
 - `modelcontextprotocol-inspector`: install helper and usage notes for the
   upstream MCP Inspector package

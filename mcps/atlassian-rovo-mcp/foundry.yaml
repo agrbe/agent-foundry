@@ -1,0 +1,14 @@
+id: atlassian-rovo-mcp
+kind: mcp
+title: Atlassian Rovo MCP Server
+description: Native Codex installer and usage notes for Atlassian's hosted Rovo MCP server with Jira-focused setup guidance.
+origin: native
+owner: "@agrbe"
+license: Apache-2.0
+status: draft
+tags:
+  - mcp
+  - jira
+  - atlassian
+  - remote
+  - oauth

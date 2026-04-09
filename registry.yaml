@@ -2382,6 +2382,24 @@ catalog:
         - workflow-orchestrator
 
   mcps:
+    - id: atlassian-rovo-mcp
+      path: mcps/atlassian-rovo-mcp
+      title: Atlassian Rovo MCP Server
+      description: Native Codex installer and usage notes for Atlassian's hosted Rovo MCP server with Jira-focused setup guidance.
+      origin: native
+      owner: "@agrbe"
+      license: Apache-2.0
+      source_repo: ""
+      source_path: ""
+      modified_from_source: false
+      status: draft
+      tags:
+        - mcp
+        - jira
+        - atlassian
+        - remote
+        - oauth
+
     - id: modelcontextprotocol-inspector
       path: mcps/modelcontextprotocol-inspector
       title: Model Context Protocol Inspector
@@ -2628,5 +2646,3 @@ catalog:
       source_path: skills/.curated/spreadsheet
       modified_from_source: false
       status: draft
-
-  mcps: []
